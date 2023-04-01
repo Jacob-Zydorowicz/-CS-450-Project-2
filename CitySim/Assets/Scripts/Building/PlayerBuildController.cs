@@ -9,7 +9,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
-public class PlayerBuildController : MonoBehaviour
+public class PlayerBuildController : MonoBehaviour, Command
 {
     #region Fields
     private int currentBuildingIndex = 0;
@@ -17,6 +17,8 @@ public class PlayerBuildController : MonoBehaviour
     private bool hasValidLocation = false;
 
     private PlacingTile currentPlacingTile;
+
+    private List<Building> recentlyPlacedBuildings = new List<Building>();
     #endregion
 
     #region Functions
@@ -37,6 +39,32 @@ public class PlayerBuildController : MonoBehaviour
         currentBuilding = BuildingFactory.SpawnBuilding(currentBuildingIndex);
     }
 
+    public void Execute()
+    {
+        PlaceBuilding();
+    }
+
+    public void Undo()
+    {
+        GetTileAtLocation(recentlyPlacedBuildings[recentlyPlacedBuildings.Count - 1].transform.position).ChangeValidState(true);
+        Destroy(recentlyPlacedBuildings[recentlyPlacedBuildings.Count-1].gameObject);
+        recentlyPlacedBuildings.RemoveAt(recentlyPlacedBuildings.Count - 1);
+    }
+
+    private void PlaceBuilding()
+    {
+        if (hasValidLocation)
+        {
+            PlayerTurnManager.AddCommand(this);
+            currentPlacingTile.ChangeValidState(false);
+            currentBuilding.SetBuildingState(Building.BuildingStateEnum.PLACED);
+            recentlyPlacedBuildings.Add(currentBuilding);
+            currentBuilding = null;
+            ResetBuilding(currentBuildingIndex);
+        }
+    }
+
+    #region Player Input
     /// <summary>
     /// Calls for an event to take place once per frame.
     /// </summary>
@@ -52,7 +80,7 @@ public class PlayerBuildController : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Mouse0))
         {
-            PlaceBuilding();
+            Execute();
         }
 
         ChangeActiveBuilding();
@@ -127,18 +155,9 @@ public class PlayerBuildController : MonoBehaviour
                 ResetBuilding(7);
         }
     }
+    #endregion
 
-    private void PlaceBuilding()
-    {
-        if (hasValidLocation)
-        {
-            currentPlacingTile.ChangeValidState(false);
-            currentBuilding.SetBuildingState(Building.BuildingStateEnum.PLACED);
-            currentBuilding = null;
-            ResetBuilding(currentBuildingIndex);
-        }
-    }
-
+    #region Checking tile locations
     private void CheckForPlacingTile()
     {
         currentPlacingTile = GetTileAtLocation(Camera.main.ScreenToWorldPoint(Input.mousePosition));
@@ -185,5 +204,6 @@ public class PlayerBuildController : MonoBehaviour
                 return false;
         }
     }
+    #endregion
     #endregion
 }
