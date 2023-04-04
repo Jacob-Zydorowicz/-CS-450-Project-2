@@ -5,32 +5,33 @@ using UnityEngine;
 public class EconManager : MonoBehaviour
 {
     [SerializeField] int startingAmount = 100;
-    int currentAmount;
-    //Subject subject
+    static int currentAmount;
+    static Subject subject;
 
     // Start is called before the first frame update
     void Start()
     {
-        //subject = GameObject.FindObjectOfType<Subject>();
+        subject = GameObject.FindObjectOfType<Subject>();
         currentAmount = startingAmount;
-        //subject.UpdateVal()
+        subject.UpdateIncome(startingAmount);
     }
 
-    public bool Buy(int amount)
+    public static bool Buy(int amount)
     {
-        if(amount>=currentAmount)
+        if(amount<=currentAmount)
         {
             currentAmount -= amount;
-            //subject.UpdateVal();
+            subject.UpdateIncome(currentAmount);
             return true;
         }
         else
             return false;
     }
 
-    public void addMoney(int amount)
+    public static void AddMoney(int amount)
     {
         currentAmount += amount;
-        //subject.UpdateVal();
+        subject.UpdateIncome(currentAmount);
     }
+
 }
