@@ -3,7 +3,13 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Inventory
+  - Commercial
+  - Eco-Friendly
+  - Residential
+  - Utility
+  - Industry
   layers:
   - Default
   - TransparentFX
