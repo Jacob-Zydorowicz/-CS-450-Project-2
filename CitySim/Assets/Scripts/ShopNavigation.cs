@@ -1,3 +1,9 @@
+/*
+ * Jacob Zydorowicz
+ * ShopNavigation.cs
+ * City Sim Project
+ * Activates the various shop menu tabs based on the button that is clicked
+ */
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -23,7 +29,6 @@ public class ShopNavigation : MonoBehaviour
     /// </summary>
     public void openNewMenu(string menuName)
     {
-
         menuTag = menuName;
 
         newMenuObj = GameObject.FindGameObjectWithTag(menuTag);
@@ -35,7 +40,5 @@ public class ShopNavigation : MonoBehaviour
 
 
         currentMenu = menuTag;
-        
-
     }
 }
