@@ -1,6 +1,14 @@
+/*
+ * Josh Bonovich, Jacob Zydorowicz
+ * EconManager.cs
+ * City Sim Project
+ * Manages and displays economy
+ */
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
+using System;
 
 public class EconManager : MonoBehaviour
 {
