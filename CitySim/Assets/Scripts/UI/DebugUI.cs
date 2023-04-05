@@ -5,24 +5,29 @@ public class DebugUI : MonoBehaviour
 {
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Alpha1))
+        if(Input.GetKeyDown(KeyCode.LeftBracket))
         {
             EconManager.AddMoney(100);
         }
 
-        if(Input.GetKeyDown(KeyCode.Alpha2))
+        if(Input.GetKeyDown(KeyCode.RightBracket))
         {
             EconManager.Buy(100);
         }
 
-        if (Input.GetKeyDown(KeyCode.Alpha3))
+        if (Input.GetKeyDown(KeyCode.Comma))
         {
             CO2Manager.UpdateCO2(5);
         }
 
-        if (Input.GetKeyDown(KeyCode.Alpha4))
+        if (Input.GetKeyDown(KeyCode.Period))
         {
             CO2Manager.UpdateCO2(-5);
+        }
+
+        if(Input.GetKeyDown(KeyCode.Semicolon))
+        {
+
         }
     }
 }

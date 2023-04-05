@@ -12,7 +12,8 @@ public class PlayerTurnManager : MonoBehaviour
 {
     #region Fields
     private List<Command> buildingCommands = new List<Command>();
-
+    private static int turn;
+    private static Subject sb;
     private static PlayerTurnManager Instance;
     #endregion
 
@@ -20,6 +21,9 @@ public class PlayerTurnManager : MonoBehaviour
     private void Awake()
     {
         Instance = this;
+        turn = 1;
+        sb = FindObjectOfType<Subject>();
+        sb.UpdateTurn(turn);
     }
 
     public static void AddCommand(Command commandExecuted)
@@ -42,6 +46,17 @@ public class PlayerTurnManager : MonoBehaviour
             buildingCommands[buildingCommands.Count-1].Undo();
             buildingCommands.RemoveAt(buildingCommands.Count-1);
         }
+    }
+
+    public static void NextTurn()
+    {
+        turn++;
+        sb.UpdateTurn(turn);
+        foreach(Building building in GameObject.FindObjectsOfType<Building>())
+        {
+            building.TurnEffect();
+        }
+        Instance.buildingCommands.Clear();
     }
     #endregion
 }
