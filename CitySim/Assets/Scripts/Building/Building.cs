@@ -94,6 +94,14 @@ public class Building : MonoBehaviour
     /// </summary>
     private void Update()
     {
+        //currentBuildingState.BuildingTickEvent();
+    }
+
+    ///<summary>
+    ///Calls the current building state every turn
+    ///</summary>
+    public void TurnEffect()
+    {
         currentBuildingState.BuildingTickEvent();
     }
 
