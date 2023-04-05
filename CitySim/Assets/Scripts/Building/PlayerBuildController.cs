@@ -30,7 +30,7 @@ public class PlayerBuildController : MonoBehaviour, Command
         ResetBuilding();
     }
 
-    private void ResetBuilding(int newIndex = 0)
+    public void ResetBuilding(int newIndex = 0)
     {
         if (newIndex == -1) return;
         if (currentBuilding != null) Destroy(currentBuilding.gameObject);
