@@ -26,6 +26,7 @@ public class ShopNavigation : MonoBehaviour
 
     /// <summary>
     /// Method <c>openNewMenu</c> activates the new menu tab based on which button is clicked
+    /// <paramref name="menuName"/> Name of the new menu that will be opened. Passed in from shop tab buttons
     /// </summary>
     public void openNewMenu(string menuName)
     {

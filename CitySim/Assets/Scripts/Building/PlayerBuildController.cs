@@ -1,5 +1,5 @@
 /*
- * (Jacob Welch)
+ * (Jacob Welch, Jacob Zydorowicz)
  * (PlayerBuildController)
  * (CitySim)
  * (Description: )
@@ -12,6 +12,8 @@ using UnityEngine.Tilemaps;
 public class PlayerBuildController : MonoBehaviour, Command
 {
     #region Fields
+    private int shopIndex;
+    private int currentBuildCost=0;
     private int currentBuildingIndex = 0;
     private Building currentBuilding;
     private bool hasValidLocation = false;
@@ -80,29 +82,107 @@ public class PlayerBuildController : MonoBehaviour, Command
     {
         if (Input.GetKeyDown(KeyCode.Mouse0))
         {
-            Execute();
+            if(EconManager.Buy(currentBuildCost))
+            {
+                Execute();
+            }
         }
 
         ChangeActiveBuilding();
     }
+    /// <summary>
+    /// Method <c>getBuildingFromShop</c> Uses shop buttons to set the active building
+    /// <paramref name="buildingIndex"/> index assigned from shop that corresponds to factory lsit. Need assign in scence shop buttons
+    /// </summary>
+    public void getBuildingFromShop(int buildingIndex)
+    {
+        shopIndex = buildingIndex;
+        
+    }
+    /// <summary>
+    /// Method <c>getPriceFromShop</c> Uses shop buttons to set the active building price
+    /// <paramref name="price"/> cost to place the building. Need assign in scence shop buttons
+    /// </summary>
+    public void getPriceFromShop(int price)
+    {
+        currentBuildCost = price;
+    }
 
+    
     private void ChangeActiveBuilding()
     {
-        ChangeActiveBuildingMouse();
+        ChangeActiveBuildingMouse(shopIndex);
         ChangeActiveBuildingKeys();
     }
 
-    private void ChangeActiveBuildingMouse()
+    
+    private void ChangeActiveBuildingMouse(int shopIndex)
     {
-        /*
-        if(Input.mouseScrollDelta > 0)
+        switch (shopIndex)
         {
-            ResetBuilding(++currentBuildingIndex);
+            case 0:
+                if (currentBuildingIndex != 0)
+                    ResetBuilding(0);
+                break;
+            case 1:
+                if (currentBuildingIndex != 1)
+                    ResetBuilding(1);
+                break;
+            case 2:
+                if (currentBuildingIndex != 2)
+                    ResetBuilding(2);
+                break;
+            case 3:
+                if (currentBuildingIndex != 3)
+                    ResetBuilding(3);
+                break;
+            case 4:
+                if (currentBuildingIndex != 4)
+                    ResetBuilding(4);
+                break;
+            case 5:
+                if (currentBuildingIndex != 5)
+                    ResetBuilding(5);
+                break;
+            case 6:
+                if (currentBuildingIndex != 6)
+                    ResetBuilding(6);
+                break;
+            case 7:
+                if (currentBuildingIndex != 7)
+                    ResetBuilding(7);
+                break;
+            case 8:
+                if (currentBuildingIndex != 8)
+                    ResetBuilding(8);
+                break;
+            case 9:
+                if (currentBuildingIndex != 9)
+                    ResetBuilding(9);
+                break;
+            case 10:
+                if (currentBuildingIndex != 10)
+                    ResetBuilding(10);
+                break;
+            case 11:
+                if (currentBuildingIndex != 11)
+                    ResetBuilding(11);
+                break;
+            case 12:
+                if (currentBuildingIndex != 12)
+                    ResetBuilding(12);
+                break;
+            case 13:
+                if (currentBuildingIndex != 13)
+                    ResetBuilding(13);
+                break;
+            case 14:
+                if (currentBuildingIndex != 14)
+                    ResetBuilding(14);
+                break;
+           
         }
-        else
-        {
-            ResetBuilding(--currentBuildingIndex);
-        }*/
+
     }
 
     private void ChangeActiveBuildingKeys()
