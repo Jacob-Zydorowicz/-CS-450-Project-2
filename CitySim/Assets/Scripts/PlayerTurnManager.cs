@@ -46,6 +46,11 @@ public class PlayerTurnManager : MonoBehaviour
             buildingCommands[buildingCommands.Count-1].Undo();
             buildingCommands.RemoveAt(buildingCommands.Count-1);
         }
+
+        if (Input.GetKeyDown(KeyCode.Tab))
+        {
+            NextTurn();
+        }
     }
 
     public static void NextTurn()

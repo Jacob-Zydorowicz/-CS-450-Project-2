@@ -115,12 +115,15 @@ public class Building : MonoBehaviour
         {
             case BuildingStateEnum.PLACED:
                 placedBuildingState.SetStateActive();
+                currentBuildingState = placedBuildingState;
                 break;
             case BuildingStateEnum.VALIDPREVIEW:
                 validBuildingState.SetStateActive();
+                currentBuildingState = validBuildingState;
                 break;
             case BuildingStateEnum.INVALIDPREVIEW:
                 invalidPreviewBuildingState.SetStateActive();
+                currentBuildingState = invalidPreviewBuildingState;
                 break;
             default:
                 break;
