@@ -50,8 +50,9 @@ public class BuildingFactory : MonoBehaviour
     /// <returns></returns>
     public static Building SpawnBuilding(int buildingNumber)
     {
-        if (Instance == null) return null;
-        if (buildingNumber >= Instance.placableBuildings.Count) return SpawnBuilding();
+        if (Instance == null || buildingNumber >= Instance.placableBuildings.Count) return null;
+
+        print("Building Number: " + buildingNumber);
 
         var building = Instantiate(Instance.placableBuildings[buildingNumber], new Vector2(1000, 1000), Quaternion.identity).GetComponent<Building>();
 
@@ -67,4 +68,16 @@ public class BuildingFactory : MonoBehaviour
         return Instance.placableBuildings.Count;
     }
     #endregion
+}
+
+[System.Serializable]
+public class BuildingNamePair
+{
+    [field:Tooltip("The data for the building that is to be spawned")]
+    [field:SerializeField]
+    public BuildingTurnData buildingData { get; private set; }
+
+    [field:Tooltip("The building object to spawn for this data")]
+    [field:SerializeField]
+    public GameObject building { get; private set; }
 }

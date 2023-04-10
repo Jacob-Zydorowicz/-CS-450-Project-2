@@ -11,6 +11,10 @@ PrefabInstance:
       propertyPath: values
       value: 
       objectReference: {fileID: 11400000, guid: 857c112f134cfb54f8adfa3f48e7d6a8, type: 2}
+    - target: {fileID: 6648963835157976579, guid: 719a1626656a245468c8c4df5bab0813, type: 3}
+      propertyPath: <BuildingData>k__BackingField
+      value: 
+      objectReference: {fileID: 11400000, guid: 857c112f134cfb54f8adfa3f48e7d6a8, type: 2}
     - target: {fileID: 7970570622879129539, guid: 719a1626656a245468c8c4df5bab0813, type: 3}
       propertyPath: m_Name
       value: City Hall

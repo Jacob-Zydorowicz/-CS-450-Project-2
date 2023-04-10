@@ -11,6 +11,10 @@ PrefabInstance:
       propertyPath: values
       value: 
       objectReference: {fileID: 11400000, guid: 1ce30fe6b81e1d14b9ac5807c9c08587, type: 2}
+    - target: {fileID: 6648963835157976579, guid: 14950405b1a0c7f41898c823f0dc78a8, type: 3}
+      propertyPath: <BuildingData>k__BackingField
+      value: 
+      objectReference: {fileID: 11400000, guid: 1ce30fe6b81e1d14b9ac5807c9c08587, type: 2}
     - target: {fileID: 7970570622879129539, guid: 14950405b1a0c7f41898c823f0dc78a8, type: 3}
       propertyPath: m_Name
       value: Large House

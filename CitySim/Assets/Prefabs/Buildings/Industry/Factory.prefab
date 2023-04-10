@@ -11,6 +11,10 @@ PrefabInstance:
       propertyPath: values
       value: 
       objectReference: {fileID: 11400000, guid: d380991718ae92a41883fa3081e9fb18, type: 2}
+    - target: {fileID: 6648963835157976579, guid: c5df80e758daaf642a8c709fb2dd6297, type: 3}
+      propertyPath: <BuildingData>k__BackingField
+      value: 
+      objectReference: {fileID: 11400000, guid: d380991718ae92a41883fa3081e9fb18, type: 2}
     - target: {fileID: 7970570622879129539, guid: c5df80e758daaf642a8c709fb2dd6297, type: 3}
       propertyPath: m_Name
       value: Factory

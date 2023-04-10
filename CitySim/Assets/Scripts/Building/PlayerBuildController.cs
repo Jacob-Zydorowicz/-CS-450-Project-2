@@ -14,7 +14,7 @@ public class PlayerBuildController : MonoBehaviour, Command
     #region Fields
     private int shopIndex;
     private int currentBuildCost=0;
-    private int currentBuildingIndex = 0;
+    private int currentBuildingIndex = -1;
     private Building currentBuilding;
     private bool hasValidLocation = false;
 
@@ -34,11 +34,17 @@ public class PlayerBuildController : MonoBehaviour, Command
 
     public void ResetBuilding(int newIndex = 0)
     {
-        if (newIndex == -1) return;
-        if (currentBuilding != null) Destroy(currentBuilding.gameObject);
+        if (newIndex <= -1) return;
+        var newBuilding = BuildingFactory.SpawnBuilding(newIndex);
 
-        currentBuildingIndex = newIndex;
-        currentBuilding = BuildingFactory.SpawnBuilding(currentBuildingIndex);
+        if(newBuilding != null)
+        {
+            if (currentBuilding != null) Destroy(currentBuilding.gameObject);
+
+            shopIndex = newIndex;
+            currentBuildingIndex = newIndex;
+            currentBuilding = newBuilding;
+        }
     }
 
     public void Execute()
@@ -82,7 +88,7 @@ public class PlayerBuildController : MonoBehaviour, Command
     {
         if (Input.GetKeyDown(KeyCode.Mouse0))
         {
-            if(EconManager.Buy(currentBuildCost))
+            if(EconManager.Buy(currentBuilding.GetData.Money))
             {
                 Execute();
             }

@@ -11,6 +11,10 @@ PrefabInstance:
       propertyPath: values
       value: 
       objectReference: {fileID: 11400000, guid: 949c007e4f1135a48833baf18c4b3bd3, type: 2}
+    - target: {fileID: 6648963835157976579, guid: 14950405b1a0c7f41898c823f0dc78a8, type: 3}
+      propertyPath: <BuildingData>k__BackingField
+      value: 
+      objectReference: {fileID: 11400000, guid: 949c007e4f1135a48833baf18c4b3bd3, type: 2}
     - target: {fileID: 7970570622879129539, guid: 14950405b1a0c7f41898c823f0dc78a8, type: 3}
       propertyPath: m_Name
       value: Small House

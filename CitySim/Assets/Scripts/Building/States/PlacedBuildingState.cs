@@ -12,7 +12,7 @@ using UnityEngine;
 public class PlacedBuildingState : BuildingState
 {
     #region Fields
-    [SerializeField] private BuildingTurnData values;
+    [field:SerializeField] public BuildingTurnData BuildingData { get; private set; }
 
     private List<BuildingAbility> buildingAbilities;
     #endregion
@@ -26,8 +26,8 @@ public class PlacedBuildingState : BuildingState
 
     public override void BuildingTickEvent()
     {
-        EconManager.AddMoney(values.Money);
-        CO2Manager.UpdateCO2(values.CO2);
+        EconManager.AddMoney(BuildingData.Money);
+        CO2Manager.UpdateCO2(BuildingData.CO2);
 
         foreach(BuildingAbility ability in buildingAbilities)
         {

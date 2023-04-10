@@ -11,6 +11,10 @@ PrefabInstance:
       propertyPath: values
       value: 
       objectReference: {fileID: 11400000, guid: 9264c1c33dbb31a488203b3dd3aae9b9, type: 2}
+    - target: {fileID: 6648963835157976579, guid: 5da2677606c0a4247b46f803c54866e7, type: 3}
+      propertyPath: <BuildingData>k__BackingField
+      value: 
+      objectReference: {fileID: 11400000, guid: 9264c1c33dbb31a488203b3dd3aae9b9, type: 2}
     - target: {fileID: 7970570622879129539, guid: 5da2677606c0a4247b46f803c54866e7, type: 3}
       propertyPath: m_Name
       value: Science Center

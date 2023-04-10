@@ -36,6 +36,14 @@ public class Building : MonoBehaviour
     /// </summary>
     public enum BuildingStateEnum { PLACED, VALIDPREVIEW, INVALIDPREVIEW, DESTROY }
 
+    public BuildingTurnData GetData
+    {
+        get
+        {
+            return placedBuildingState.BuildingData;
+        }
+    }
+
     // All of the states that the tower has.
     private BuildingState currentBuildingState;
     private ValidPreviewBuildingState validBuildingState;
