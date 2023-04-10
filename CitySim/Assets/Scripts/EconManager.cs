@@ -13,7 +13,7 @@ using System;
 public class EconManager : MonoBehaviour
 {
     [SerializeField] int startingAmount = 100;
-    static int currentAmount;
+    static int currentAmount = 0;
     static Subject subject;
 
     // Start is called before the first frame update
