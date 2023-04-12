@@ -549,8 +549,9 @@ GameObject:
   - component: {fileID: 2547607660048104835}
   - component: {fileID: 7934258120064861773}
   - component: {fileID: 8523680230718627437}
+  - component: {fileID: 2136451173}
   m_Layer: 5
-  m_Name: Image
+  m_Name: Smog
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -597,7 +598,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.18867922, g: 0.18244925, b: 0.18244925, a: 0.50980395}
+  m_Color: {r: 0.18867922, g: 0.18244925, b: 0.18244925, a: 0.44705883}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -614,6 +615,20 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &2136451173
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1037126576375330752}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e93baac3a4a42b4c9bcbe9dddf5a7bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxCO2: 100
+  smog: {fileID: 8523680230718627437}
 --- !u!1 &3452258029236981870
 GameObject:
   m_ObjectHideFlags: 0

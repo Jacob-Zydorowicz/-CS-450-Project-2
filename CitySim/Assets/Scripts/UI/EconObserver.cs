@@ -14,6 +14,6 @@ public class EconObserver : Observer
     }
     public override void UpdateVal(int money, float CO2, int turn)
     {
-        counter.text = "Score: $" + money;
+        counter.text = "Cash: $" + money;
     }
 }

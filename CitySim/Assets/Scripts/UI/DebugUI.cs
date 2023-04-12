@@ -27,7 +27,7 @@ public class DebugUI : MonoBehaviour
 
         if(Input.GetKeyDown(KeyCode.Semicolon))
         {
-
+            PlayerTurnManager.NextTurn();
         }
     }
 }
