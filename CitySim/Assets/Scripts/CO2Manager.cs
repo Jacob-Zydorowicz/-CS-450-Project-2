@@ -20,24 +20,27 @@ public class CO2Manager : MonoBehaviour
     static public void UpdateCO2(float value)
     {
         currentAmount += value;
+        Debug.Log(currentAmount);
         if (currentAmount >= max)
         {
             subject.UpdateCO2(max);
             GameOver();
         }
-        if (currentAmount < 0)
+        else if (currentAmount < 0)
         {
             currentAmount = 0;
             subject.UpdateCO2(0);
         }
-        subject.UpdateCO2(currentAmount);
+        else
+            subject.UpdateCO2(currentAmount);
 
         
     }
 
     static private void GameOver()
     {
-        Debug.Log("Game Over");
+        GameObject.FindObjectOfType<ExtraMenusController>().Lose();
+        //Debug.Log("Game Over");
         return;
     }
 }

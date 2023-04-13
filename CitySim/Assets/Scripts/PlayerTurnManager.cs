@@ -12,6 +12,9 @@ public class PlayerTurnManager : MonoBehaviour
 {
     #region Fields
     private List<Command> buildingCommands = new List<Command>();
+    [SerializeField] int maxTurns = 50;
+    [SerializeField] float baseCO2rate = .1f;
+    [SerializeField] float CO2RateOfIncrease = .4f;
     private static int turn;
     private static Subject sb;
     private static PlayerTurnManager Instance;
@@ -23,7 +26,6 @@ public class PlayerTurnManager : MonoBehaviour
         Instance = this;
         turn = 1;
         sb = FindObjectOfType<Subject>();
-        sb.UpdateTurn(turn);
     }
 
     public static void AddCommand(Command commandExecuted)
@@ -41,27 +43,40 @@ public class PlayerTurnManager : MonoBehaviour
     /// </summary>
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.R) && buildingCommands.Count != 0)
+        if (Input.GetKeyDown(KeyCode.R))
         {
-            buildingCommands[buildingCommands.Count-1].Undo();
-            buildingCommands.RemoveAt(buildingCommands.Count-1);
+            Undo();
         }
 
         if (Input.GetKeyDown(KeyCode.Tab))
         {
+            //Debug.Log("next turn");
             NextTurn();
         }
     }
 
-    public static void NextTurn()
+    public void Undo()
+    {
+        if (buildingCommands.Count != 0)
+        {
+            buildingCommands[buildingCommands.Count - 1].Undo();
+            buildingCommands.RemoveAt(buildingCommands.Count - 1);
+        }
+    }
+
+
+    public void NextTurn()
     {
         turn++;
+        CO2Manager.UpdateCO2((baseCO2rate + CO2RateOfIncrease * (turn - 1)));
         sb.UpdateTurn(turn);
         foreach(Building building in GameObject.FindObjectsOfType<Building>())
         {
             building.TurnEffect();
         }
         Instance.buildingCommands.Clear();
+        if (turn >= maxTurns)
+            GameObject.FindObjectOfType<ExtraMenusController>().Win();
     }
     #endregion
 }

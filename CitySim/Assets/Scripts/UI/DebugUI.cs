@@ -25,9 +25,5 @@ public class DebugUI : MonoBehaviour
             CO2Manager.UpdateCO2(-5);
         }
 
-        if(Input.GetKeyDown(KeyCode.Semicolon))
-        {
-            PlayerTurnManager.NextTurn();
-        }
     }
 }

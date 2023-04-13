@@ -17,6 +17,7 @@ public class CO2Observer : Observer
 
     public override void UpdateVal(int money, float CO2, int turn)
     {
+        //Debug.Log(CO2);
         currentCO2 = CO2;
         fillBar.fillAmount = CO2 / maxCO2;
         fillBar.color = gd.Evaluate(CO2 / maxCO2);
