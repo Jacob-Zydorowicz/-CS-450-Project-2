@@ -7,6 +7,7 @@ public class CO2Observer : Observer
 {
     [SerializeField] float maxCO2;
     float currentCO2 = 0;
+    public AudioSource halfFullMusic;
     [SerializeField] Image fillBar;
     [SerializeField] Gradient gd;
 
@@ -21,5 +22,14 @@ public class CO2Observer : Observer
         currentCO2 = CO2;
         fillBar.fillAmount = CO2 / maxCO2;
         fillBar.color = gd.Evaluate(CO2 / maxCO2);
+
+
+        if(CO2 >= 50.0f && halfFullMusic.isPlaying == false)
+        {
+            halfFullMusic.Play();
+        }
+
+       
+
     }
 }

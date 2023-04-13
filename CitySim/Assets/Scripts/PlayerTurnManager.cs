@@ -1,5 +1,5 @@
 /*
- * (Jacob Welch)
+ * (Jacob Welch, Jacob Zydorowicz)
  * (PlayerTurnManager)
  * (CitySim)
  * (Description: )
@@ -18,6 +18,9 @@ public class PlayerTurnManager : MonoBehaviour
     private static int turn;
     private static Subject sb;
     private static PlayerTurnManager Instance;
+
+    public AudioSource undoSource;
+    public AudioClip undoClip;
     #endregion
 
     #region Functions
@@ -62,6 +65,8 @@ public class PlayerTurnManager : MonoBehaviour
             buildingCommands[buildingCommands.Count - 1].Undo();
             buildingCommands.RemoveAt(buildingCommands.Count - 1);
         }
+
+        undoSource.PlayOneShot(undoClip);
     }
 
 
