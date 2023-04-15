@@ -27,7 +27,7 @@ public class PlayerBuildController : MonoBehaviour, Command
     /// <summary>
     /// Handles initilization of components and other fields before anything else.
     /// </summary>
-    private void Awake()
+    private void Start()
     {
         ResetBuilding();
     }
@@ -114,14 +114,12 @@ public class PlayerBuildController : MonoBehaviour, Command
         currentBuildCost = price;
     }
 
-    
     private void ChangeActiveBuilding()
     {
         ChangeActiveBuildingMouse(shopIndex);
         ChangeActiveBuildingKeys();
     }
 
-    
     private void ChangeActiveBuildingMouse(int shopIndex)
     {
         switch (shopIndex)
@@ -186,7 +184,6 @@ public class PlayerBuildController : MonoBehaviour, Command
                 if (currentBuildingIndex != 14)
                     ResetBuilding(14);
                 break;
-           
         }
 
     }
