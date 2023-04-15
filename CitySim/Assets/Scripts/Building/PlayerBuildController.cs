@@ -18,6 +18,12 @@ public class PlayerBuildController : MonoBehaviour, Command
     private Building currentBuilding;
     private bool hasValidLocation = false;
 
+    public AudioSource playerBuildClips;
+    public AudioClip shopBuyClip;
+    public AudioClip shopDenyClip;
+    public AudioClip placeBuildingClip;
+    
+
     private PlacingTile currentPlacingTile;
 
     private List<Building> recentlyPlacedBuildings = new List<Building>();
@@ -50,6 +56,7 @@ public class PlayerBuildController : MonoBehaviour, Command
     public void Execute()
     {
         PlaceBuilding();
+        playerBuildClips.PlayOneShot(placeBuildingClip);
     }
 
     public void Undo()
@@ -90,7 +97,12 @@ public class PlayerBuildController : MonoBehaviour, Command
         {
             if(EconManager.Buy(currentBuilding.GetData.Money))
             {
+                playerBuildClips.PlayOneShot(shopBuyClip);
                 Execute();
+            }
+            else
+            {
+                playerBuildClips.PlayOneShot(shopDenyClip);
             }
         }
 

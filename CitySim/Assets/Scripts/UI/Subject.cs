@@ -11,6 +11,7 @@ public class Subject : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
+        turnNum = 1;
         observers = new List<Observer>();
     }
 
@@ -48,7 +49,7 @@ public class Subject : MonoBehaviour
 
     public void UpdateTurn(int value)
     {
-        CO2 = value;
+        turnNum = value;
         UpdateAll();
     }
 }

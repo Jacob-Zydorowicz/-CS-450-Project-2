@@ -12,7 +12,7 @@ using System;
 
 public class EconManager : MonoBehaviour
 {
-    [SerializeField] int startingAmount = 100;
+    [SerializeField] int startingAmount = 500;
     static int currentAmount = 0;
     static Subject subject;
 
