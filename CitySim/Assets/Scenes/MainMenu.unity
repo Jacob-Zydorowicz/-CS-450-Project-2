@@ -1055,10 +1055,10 @@ RectTransform:
   m_Father: {fileID: 1934277713}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 400, y: 50}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: -10}
+  m_SizeDelta: {x: -200, y: -220}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &502591842
 MonoBehaviour:
@@ -1080,7 +1080,31 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: (Insert Tutorial Here)
+  m_text: 'You are the leader of you town and it is your civic duty to keep your
+    climate well and healthy.
+
+
+    To this end, you will be presented with multiple
+    options of buildings to place in your town. Some will bring you more money while
+    other will be good to the environment. Balancing C02 levels is the key to success.
+
+
+    Left
+    Click: Place Building
+
+
+    + : Click to open shop
+
+    - : Click to close shop
+
+    Click
+    "Next turn" button to go to the next turn
+
+
+    Right Click and drag: to move
+    camera
+
+    WASD: to move camera'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -1107,14 +1131,14 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 28
+  m_fontSize: 14.3
   m_fontSizeBase: 28
   m_fontWeight: 400
-  m_enableAutoSizing: 0
-  m_fontSizeMin: 18
+  m_enableAutoSizing: 1
+  m_fontSizeMin: 12
   m_fontSizeMax: 72
   m_fontStyle: 0
-  m_HorizontalAlignment: 2
+  m_HorizontalAlignment: 1
   m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
@@ -1779,7 +1803,7 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: Gameplay
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &923465837
@@ -2582,6 +2606,63 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1702002734}
   m_CullTransparentMesh: 1
+--- !u!1001 &1758313716
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 3044281032500127714, guid: 411a51fcd91460d42bdd743eea8ca7b9, type: 3}
+      propertyPath: m_Name
+      value: Singleton audio manager
+      objectReference: {fileID: 0}
+    - target: {fileID: 3044281032500127727, guid: 411a51fcd91460d42bdd743eea8ca7b9, type: 3}
+      propertyPath: m_RootOrder
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3044281032500127727, guid: 411a51fcd91460d42bdd743eea8ca7b9, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 217.45592
+      objectReference: {fileID: 0}
+    - target: {fileID: 3044281032500127727, guid: 411a51fcd91460d42bdd743eea8ca7b9, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 226.2113
+      objectReference: {fileID: 0}
+    - target: {fileID: 3044281032500127727, guid: 411a51fcd91460d42bdd743eea8ca7b9, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -2.1679466
+      objectReference: {fileID: 0}
+    - target: {fileID: 3044281032500127727, guid: 411a51fcd91460d42bdd743eea8ca7b9, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3044281032500127727, guid: 411a51fcd91460d42bdd743eea8ca7b9, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3044281032500127727, guid: 411a51fcd91460d42bdd743eea8ca7b9, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3044281032500127727, guid: 411a51fcd91460d42bdd743eea8ca7b9, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3044281032500127727, guid: 411a51fcd91460d42bdd743eea8ca7b9, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3044281032500127727, guid: 411a51fcd91460d42bdd743eea8ca7b9, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3044281032500127727, guid: 411a51fcd91460d42bdd743eea8ca7b9, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 411a51fcd91460d42bdd743eea8ca7b9, type: 3}
 --- !u!1 &1932044752
 GameObject:
   m_ObjectHideFlags: 0

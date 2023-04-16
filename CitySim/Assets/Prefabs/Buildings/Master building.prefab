@@ -142,6 +142,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stateColor: {r: 1, g: 1, b: 1, a: 1}
+  <BuildingData>k__BackingField: {fileID: 0}
 --- !u!114 &4902880751482214587
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -167,4 +168,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fb929b09027ccbc48bc24e4de0514c40, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stateColor: {r: 0.48057717, g: 1, b: 0.4481132, a: 1}
+  stateColor: {r: 0.06722689, g: 1, b: 0, a: 1}

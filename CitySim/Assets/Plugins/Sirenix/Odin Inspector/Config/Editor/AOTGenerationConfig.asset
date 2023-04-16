@@ -9,11 +9,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c83e12ea43b96ca4ea7086540a26329b, type: 3}
-  m_Name: Apartment Building Data
+  m_Script: {fileID: 1726182683, guid: a4865f1ab4504ed8a368670db22f409c, type: 3}
+  m_Name: AOTGenerationConfig
   m_EditorClassIdentifier: 
-  <BuildingName>k__BackingField: 
-  <BuildingDescription>k__BackingField: 
-  <AbilityDescription>k__BackingField: 
-  <CO2>k__BackingField: 2
-  <Money>k__BackingField: 250
+  automateBeforeBuilds: 0
+  deleteDllAfterBuilds: 1
+  AutomateForAllAOTPlatforms: 1
+  automateForPlatforms: 0900000014000000
+  lastScan: 0
+  supportSerializedTypes: []

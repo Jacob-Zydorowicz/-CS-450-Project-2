@@ -17,6 +17,8 @@ public class BuildingFactory : MonoBehaviour
     [Tooltip("The List of currently placeable buildings")]
     [SerializeField] private List<GameObject> placableBuildings = new List<GameObject>();
 
+    private Dictionary<string, GameObject> buildingDictionary = new Dictionary<string, GameObject>();
+
     /// <summary>
     /// The instance in the scene of the building factory.
     /// </summary>
@@ -30,6 +32,15 @@ public class BuildingFactory : MonoBehaviour
     private void Awake()
     {
         Instance = this;
+        InitializeDictionary();
+    }
+
+    private void InitializeDictionary()
+    {
+        foreach(GameObject obj in placableBuildings)
+        {
+            buildingDictionary.Add(obj.name, obj);
+        }
     }
 
     /// <summary>
@@ -48,13 +59,16 @@ public class BuildingFactory : MonoBehaviour
     /// </summary>
     /// <param name="buildingNumber">The building index that should be spawned.</param>
     /// <returns></returns>
-    public static Building SpawnBuilding(int buildingNumber)
+    public static Building SpawnBuilding(string buildingName)
     {
-        if (Instance == null || buildingNumber >= Instance.placableBuildings.Count) return null;
+        if (Instance == null) return null;
 
-        print("Building Number: " + buildingNumber);
+        Building building = null;
 
-        var building = Instantiate(Instance.placableBuildings[buildingNumber], new Vector2(1000, 1000), Quaternion.identity).GetComponent<Building>();
+        if(Instance.buildingDictionary.TryGetValue(buildingName, out GameObject buildingToSpawn))
+        {
+            building = Instantiate(buildingToSpawn, new Vector2(1000, 1000), Quaternion.identity).GetComponent<Building>();
+        }
 
         return building;
     }

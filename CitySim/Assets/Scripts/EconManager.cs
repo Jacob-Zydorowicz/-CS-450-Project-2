@@ -24,16 +24,15 @@ public class EconManager : MonoBehaviour
         subject.UpdateIncome(startingAmount);
     }
 
-    public static bool Buy(int amount)
+    public static void Buy(int amount)
     {
-        if(amount<=currentAmount)
-        {
-            currentAmount -= amount;
-            subject.UpdateIncome(currentAmount);
-            return true;
-        }
-        else
-            return false;
+        currentAmount -= amount;
+        subject.UpdateIncome(currentAmount);
+    }
+
+    public static bool CanBuy(int amount)
+    {
+        return amount <= currentAmount;
     }
 
     public static void AddMoney(int amount)

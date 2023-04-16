@@ -12,5 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c83e12ea43b96ca4ea7086540a26329b, type: 3}
   m_Name: Eco Friendly Power Data
   m_EditorClassIdentifier: 
-  <CO2>k__BackingField: 2
+  <BuildingName>k__BackingField: 
+  <BuildingDescription>k__BackingField: 
+  <AbilityDescription>k__BackingField: 
+  <CO2>k__BackingField: -2
   <Money>k__BackingField: 1000

@@ -11,11 +11,11 @@ using UnityEngine;
 public class CameraMovement : MonoBehaviour
 {
     #region Fields
-    [Range(0.0f, 20.0f)]
+    [Range(0.0f, 1000.0f)]
     [Tooltip("The speed that players can move the camera with their keyboard")]
     [SerializeField] private float keyboardMoveSpeed = 8;
 
-    [Range(0.0f, 20.0f)]
+    [Range(0.0f, 1000.0f)]
     [Tooltip("The speed that players can move the camera with the mouse")]
     [SerializeField] private float mouseMoveSpeed = 5;
 
@@ -28,6 +28,8 @@ public class CameraMovement : MonoBehaviour
     /// A reduction applied to the mosue move speed.
     /// </summary>
     private const float mouseSpeedReduction = 0.01f;
+
+    private Rigidbody2D rb2D;
     #endregion
 
     #region Functions
@@ -37,12 +39,13 @@ public class CameraMovement : MonoBehaviour
     private void Awake()
     {
         lastMousePos = Input.mousePosition;
+        rb2D = GetComponent<Rigidbody2D>();
     }
 
     /// <summary>
     /// Calls for an event to take place once per frame.
     /// </summary>
-    private void LateUpdate()
+    private void FixedUpdate()
     {
         CheckForInput();
     }
@@ -56,7 +59,7 @@ public class CameraMovement : MonoBehaviour
         {
             // Moves the player based on the mouses delta position
             var mosueDelta = lastMousePos - (Vector2)Input.mousePosition;
-            MoveCamera(mosueDelta, mouseMoveSpeed*mouseSpeedReduction);
+            MoveCamera(mosueDelta, mouseMoveSpeed*mouseSpeedReduction, Time.fixedDeltaTime);
         }
         else
         {
@@ -77,7 +80,7 @@ public class CameraMovement : MonoBehaviour
         var moveDir = new Vector2(xMove, yMove);
         moveDir.Normalize();
 
-        MoveCamera(moveDir, keyboardMoveSpeed, Time.deltaTime);
+        MoveCamera(moveDir, keyboardMoveSpeed, Time.fixedDeltaTime);
     }
 
     /// <summary>
@@ -88,7 +91,8 @@ public class CameraMovement : MonoBehaviour
     /// <param name="moveSpeed">The speed at which the camera will move.</param>
     private void MoveCamera(Vector2 direction, float moveSpeed, float delta = 1)
     {
-        transform.position += (Vector3)(direction * moveSpeed * delta);
+        var moveVector = (direction * moveSpeed * delta);
+        rb2D.MovePosition(rb2D.position + moveVector);
     }
     #endregion
 }

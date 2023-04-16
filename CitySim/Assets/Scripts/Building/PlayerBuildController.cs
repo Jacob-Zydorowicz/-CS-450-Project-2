@@ -12,9 +12,15 @@ using UnityEngine.Tilemaps;
 public class PlayerBuildController : MonoBehaviour, Command
 {
     #region Fields
-    private int shopIndex;
     private int currentBuildCost=0;
-    private int currentBuildingIndex = -1;
+    private string currentBuildingName = "";
+
+    [Tooltip("The names of the buildings in the same order as they are in the building factory")]
+    [SerializeField] private string[] buildingNames = new string[0];
+
+    [Tooltip("The object that is the shop")]
+    [SerializeField] private GameObject shop;
+
     private Building currentBuilding;
     private bool hasValidLocation = false;
 
@@ -35,20 +41,19 @@ public class PlayerBuildController : MonoBehaviour, Command
     /// </summary>
     private void Start()
     {
-        ResetBuilding();
+        ResetBuilding(buildingNames[0]);
     }
 
-    public void ResetBuilding(int newIndex = 0)
+    public void ResetBuilding(string name = "")
     {
-        if (newIndex <= -1) return;
-        var newBuilding = BuildingFactory.SpawnBuilding(newIndex);
+        if (name == "") return;
+        var newBuilding = BuildingFactory.SpawnBuilding(name);
 
         if(newBuilding != null)
         {
             if (currentBuilding != null) Destroy(currentBuilding.gameObject);
 
-            shopIndex = newIndex;
-            currentBuildingIndex = newIndex;
+            currentBuildingName = name;
             currentBuilding = newBuilding;
         }
     }
@@ -70,12 +75,14 @@ public class PlayerBuildController : MonoBehaviour, Command
     {
         if (hasValidLocation)
         {
+            EconManager.Buy(currentBuilding.GetData.Money);
+
             PlayerTurnManager.AddCommand(this);
             currentPlacingTile.ChangeValidState(false);
             currentBuilding.SetBuildingState(Building.BuildingStateEnum.PLACED);
             recentlyPlacedBuildings.Add(currentBuilding);
             currentBuilding = null;
-            ResetBuilding(currentBuildingIndex);
+            ResetBuilding(currentBuildingName);
         }
     }
 
@@ -95,7 +102,7 @@ public class PlayerBuildController : MonoBehaviour, Command
     {
         if (Input.GetKeyDown(KeyCode.Mouse0))
         {
-            if(EconManager.Buy(currentBuilding.GetData.Money))
+            if(hasValidLocation)
             {
                 playerBuildClips.PlayOneShot(shopBuyClip);
                 Execute();
@@ -108,15 +115,7 @@ public class PlayerBuildController : MonoBehaviour, Command
 
         ChangeActiveBuilding();
     }
-    /// <summary>
-    /// Method <c>getBuildingFromShop</c> Uses shop buttons to set the active building
-    /// <paramref name="buildingIndex"/> index assigned from shop that corresponds to factory lsit. Need assign in scence shop buttons
-    /// </summary>
-    public void getBuildingFromShop(int buildingIndex)
-    {
-        shopIndex = buildingIndex;
-        
-    }
+
     /// <summary>
     /// Method <c>getPriceFromShop</c> Uses shop buttons to set the active building price
     /// <paramref name="price"/> cost to place the building. Need assign in scence shop buttons
@@ -128,7 +127,6 @@ public class PlayerBuildController : MonoBehaviour, Command
 
     private void ChangeActiveBuilding()
     {
-        ChangeActiveBuildingMouse(shopIndex);
         ChangeActiveBuildingKeys();
     }
 
@@ -137,64 +135,64 @@ public class PlayerBuildController : MonoBehaviour, Command
         switch (shopIndex)
         {
             case 0:
-                if (currentBuildingIndex != 0)
-                    ResetBuilding(0);
+                if (currentBuildingName != buildingNames[0])
+                    ResetBuilding(buildingNames[0]);
                 break;
             case 1:
-                if (currentBuildingIndex != 1)
-                    ResetBuilding(1);
+                if (currentBuildingName != buildingNames[1])
+                    ResetBuilding(buildingNames[1]);
                 break;
             case 2:
-                if (currentBuildingIndex != 2)
-                    ResetBuilding(2);
+                if (currentBuildingName != buildingNames[2])
+                    ResetBuilding(buildingNames[2]);
                 break;
             case 3:
-                if (currentBuildingIndex != 3)
-                    ResetBuilding(3);
+                if (currentBuildingName != buildingNames[3])
+                    ResetBuilding(buildingNames[3]);
                 break;
             case 4:
-                if (currentBuildingIndex != 4)
-                    ResetBuilding(4);
+                if (currentBuildingName != buildingNames[4])
+                    ResetBuilding(buildingNames[4]);
                 break;
             case 5:
-                if (currentBuildingIndex != 5)
-                    ResetBuilding(5);
+                if (currentBuildingName != buildingNames[5])
+                    ResetBuilding(buildingNames[5]);
                 break;
             case 6:
-                if (currentBuildingIndex != 6)
-                    ResetBuilding(6);
+                if (currentBuildingName != buildingNames[6])
+                    ResetBuilding(buildingNames[6]);
                 break;
             case 7:
-                if (currentBuildingIndex != 7)
-                    ResetBuilding(7);
+                if (currentBuildingName != buildingNames[7])
+                    ResetBuilding(buildingNames[7]);
                 break;
             case 8:
-                if (currentBuildingIndex != 8)
-                    ResetBuilding(8);
+                if (currentBuildingName != buildingNames[8])
+                    ResetBuilding(buildingNames[8]);
                 break;
             case 9:
-                if (currentBuildingIndex != 9)
-                    ResetBuilding(9);
+                if (currentBuildingName != buildingNames[9])
+                    ResetBuilding(buildingNames[9]);
                 break;
             case 10:
-                if (currentBuildingIndex != 10)
-                    ResetBuilding(10);
+                if (currentBuildingName != buildingNames[10])
+                    ResetBuilding(buildingNames[10]);
                 break;
             case 11:
-                if (currentBuildingIndex != 11)
-                    ResetBuilding(11);
+                if (currentBuildingName != buildingNames[11])
+                    ResetBuilding(buildingNames[11]);
                 break;
             case 12:
-                if (currentBuildingIndex != 12)
-                    ResetBuilding(12);
+                if (currentBuildingName != buildingNames[12])
+                    ResetBuilding(buildingNames[12]);
                 break;
             case 13:
-                if (currentBuildingIndex != 13)
-                    ResetBuilding(13);
+                if (currentBuildingName != buildingNames[13])
+                    ResetBuilding(buildingNames[13]);
                 break;
             case 14:
-                if (currentBuildingIndex != 14)
-                    ResetBuilding(14);
+                if (currentBuildingName != buildingNames[14])
+                    ResetBuilding(buildingNames[14]);
                 break;
         }
 
@@ -204,50 +202,50 @@ public class PlayerBuildController : MonoBehaviour, Command
     {
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
-            if (currentBuildingIndex != 0)
-                ResetBuilding(0);
+            if (currentBuildingName != buildingNames[0])
+                ResetBuilding(buildingNames[0]);
         }
 
         if (Input.GetKeyDown(KeyCode.Alpha2))
         {
-            if (currentBuildingIndex != 1)
-                ResetBuilding(1);
+            if (currentBuildingName != buildingNames[1])
+                ResetBuilding(buildingNames[1]);
         }
 
         if (Input.GetKeyDown(KeyCode.Alpha3))
         {
-            if (currentBuildingIndex != 2)
-                ResetBuilding(2);
+            if (currentBuildingName != buildingNames[2])
+                ResetBuilding(buildingNames[2]);
         }
 
         if (Input.GetKeyDown(KeyCode.Alpha4))
         {
-            if (currentBuildingIndex != 3)
-                ResetBuilding(3);
+            if (currentBuildingName != buildingNames[3])
+                ResetBuilding(buildingNames[3]);
         }
 
         if (Input.GetKeyDown(KeyCode.Alpha5))
         {
-            if (currentBuildingIndex != 4)
-                ResetBuilding(4);
+            if (currentBuildingName != buildingNames[4])
+                ResetBuilding(buildingNames[4]);
         }
 
         if (Input.GetKeyDown(KeyCode.Alpha6))
         {
-            if (currentBuildingIndex != 5)
-                ResetBuilding(5);
+            if (currentBuildingName != buildingNames[5])
+                ResetBuilding(buildingNames[5]);
         }
 
         if (Input.GetKeyDown(KeyCode.Alpha7))
         {
-            if (currentBuildingIndex != 6)
-                ResetBuilding(6);
+            if (currentBuildingName != buildingNames[6])
+                ResetBuilding(buildingNames[6]);
         }
 
         if (Input.GetKeyDown(KeyCode.Alpha8))
         {
-            if (currentBuildingIndex != 7)
-                ResetBuilding(7);
+            if (currentBuildingName != buildingNames[7])
+                ResetBuilding(buildingNames[7]);
         }
     }
     #endregion
@@ -261,6 +259,11 @@ public class PlayerBuildController : MonoBehaviour, Command
         {
             hasValidLocation = CheckValidLocations(currentPlacingTile);
             currentBuilding.transform.position = currentPlacingTile.transform.position;
+
+            if (!EconManager.CanBuy(currentBuilding.GetData.Money))
+            {
+                hasValidLocation = false;
+            }
 
             Building.BuildingStateEnum buildingState = hasValidLocation ? Building.BuildingStateEnum.VALIDPREVIEW : Building.BuildingStateEnum.INVALIDPREVIEW;
             currentBuilding.SetBuildingState(buildingState);
