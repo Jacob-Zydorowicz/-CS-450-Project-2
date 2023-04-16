@@ -15,6 +15,14 @@ PrefabInstance:
       propertyPath: <BuildingData>k__BackingField
       value: 
       objectReference: {fileID: 11400000, guid: 9264c1c33dbb31a488203b3dd3aae9b9, type: 2}
+    - target: {fileID: 7970570622879129538, guid: 5da2677606c0a4247b46f803c54866e7, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.x
+      value: 0.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 7970570622879129538, guid: 5da2677606c0a4247b46f803c54866e7, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.y
+      value: 0.96
+      objectReference: {fileID: 0}
     - target: {fileID: 7970570622879129539, guid: 5da2677606c0a4247b46f803c54866e7, type: 3}
       propertyPath: m_Name
       value: Science Center
@@ -62,6 +70,22 @@ PrefabInstance:
     - target: {fileID: 7970570622879129540, guid: 5da2677606c0a4247b46f803c54866e7, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7970570622879129541, guid: 5da2677606c0a4247b46f803c54866e7, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 1658504636, guid: 0332fb27dbb131e4aa1890813b3f89de, type: 3}
+    - target: {fileID: 7970570622879129541, guid: 5da2677606c0a4247b46f803c54866e7, type: 3}
+      propertyPath: m_Color.b
+      value: 0.990566
+      objectReference: {fileID: 0}
+    - target: {fileID: 7970570622879129541, guid: 5da2677606c0a4247b46f803c54866e7, type: 3}
+      propertyPath: m_Color.g
+      value: 0.990566
+      objectReference: {fileID: 0}
+    - target: {fileID: 7970570622879129541, guid: 5da2677606c0a4247b46f803c54866e7, type: 3}
+      propertyPath: m_Color.r
+      value: 0.990566
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5da2677606c0a4247b46f803c54866e7, type: 3}

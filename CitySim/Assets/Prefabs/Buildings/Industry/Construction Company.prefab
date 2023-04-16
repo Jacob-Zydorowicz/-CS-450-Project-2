@@ -15,6 +15,14 @@ PrefabInstance:
       propertyPath: <BuildingData>k__BackingField
       value: 
       objectReference: {fileID: 11400000, guid: ae6a4efec5329af4881fccfe78395f8f, type: 2}
+    - target: {fileID: 7970570622879129538, guid: c5df80e758daaf642a8c709fb2dd6297, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.x
+      value: 5.88
+      objectReference: {fileID: 0}
+    - target: {fileID: 7970570622879129538, guid: c5df80e758daaf642a8c709fb2dd6297, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.y
+      value: 4.24
+      objectReference: {fileID: 0}
     - target: {fileID: 7970570622879129539, guid: c5df80e758daaf642a8c709fb2dd6297, type: 3}
       propertyPath: m_Name
       value: Construction Company
@@ -62,6 +70,22 @@ PrefabInstance:
     - target: {fileID: 7970570622879129540, guid: c5df80e758daaf642a8c709fb2dd6297, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7970570622879129541, guid: c5df80e758daaf642a8c709fb2dd6297, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: a5d08389d1943874c80db5bfbb34de4b, type: 3}
+    - target: {fileID: 7970570622879129541, guid: c5df80e758daaf642a8c709fb2dd6297, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7970570622879129541, guid: c5df80e758daaf642a8c709fb2dd6297, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7970570622879129541, guid: c5df80e758daaf642a8c709fb2dd6297, type: 3}
+      propertyPath: m_Color.r
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c5df80e758daaf642a8c709fb2dd6297, type: 3}

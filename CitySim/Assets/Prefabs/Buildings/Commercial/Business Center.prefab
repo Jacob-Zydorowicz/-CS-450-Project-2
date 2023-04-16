@@ -15,6 +15,14 @@ PrefabInstance:
       propertyPath: <BuildingData>k__BackingField
       value: 
       objectReference: {fileID: 11400000, guid: e45bfc814da6cd44c98eb109f1f308ba, type: 2}
+    - target: {fileID: 7970570622879129538, guid: f1df1d7a5b2f8bc4bb286987e26c11ce, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.x
+      value: 0.48
+      objectReference: {fileID: 0}
+    - target: {fileID: 7970570622879129538, guid: f1df1d7a5b2f8bc4bb286987e26c11ce, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.y
+      value: 0.96
+      objectReference: {fileID: 0}
     - target: {fileID: 7970570622879129539, guid: f1df1d7a5b2f8bc4bb286987e26c11ce, type: 3}
       propertyPath: m_Name
       value: Business Center
@@ -62,6 +70,22 @@ PrefabInstance:
     - target: {fileID: 7970570622879129540, guid: f1df1d7a5b2f8bc4bb286987e26c11ce, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7970570622879129541, guid: f1df1d7a5b2f8bc4bb286987e26c11ce, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -797084152, guid: 0332fb27dbb131e4aa1890813b3f89de, type: 3}
+    - target: {fileID: 7970570622879129541, guid: f1df1d7a5b2f8bc4bb286987e26c11ce, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7970570622879129541, guid: f1df1d7a5b2f8bc4bb286987e26c11ce, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7970570622879129541, guid: f1df1d7a5b2f8bc4bb286987e26c11ce, type: 3}
+      propertyPath: m_Color.r
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f1df1d7a5b2f8bc4bb286987e26c11ce, type: 3}

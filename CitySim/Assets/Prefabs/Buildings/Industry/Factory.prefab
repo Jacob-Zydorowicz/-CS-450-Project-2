@@ -15,6 +15,14 @@ PrefabInstance:
       propertyPath: <BuildingData>k__BackingField
       value: 
       objectReference: {fileID: 11400000, guid: d380991718ae92a41883fa3081e9fb18, type: 2}
+    - target: {fileID: 7970570622879129538, guid: c5df80e758daaf642a8c709fb2dd6297, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.x
+      value: 0.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 7970570622879129538, guid: c5df80e758daaf642a8c709fb2dd6297, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.y
+      value: 0.71
+      objectReference: {fileID: 0}
     - target: {fileID: 7970570622879129539, guid: c5df80e758daaf642a8c709fb2dd6297, type: 3}
       propertyPath: m_Name
       value: Factory
@@ -62,6 +70,22 @@ PrefabInstance:
     - target: {fileID: 7970570622879129540, guid: c5df80e758daaf642a8c709fb2dd6297, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7970570622879129541, guid: c5df80e758daaf642a8c709fb2dd6297, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 1961281927, guid: 0bf9151d6dd217042993c10b11be0bf5, type: 3}
+    - target: {fileID: 7970570622879129541, guid: c5df80e758daaf642a8c709fb2dd6297, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7970570622879129541, guid: c5df80e758daaf642a8c709fb2dd6297, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7970570622879129541, guid: c5df80e758daaf642a8c709fb2dd6297, type: 3}
+      propertyPath: m_Color.r
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c5df80e758daaf642a8c709fb2dd6297, type: 3}

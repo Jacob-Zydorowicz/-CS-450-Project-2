@@ -15,6 +15,14 @@ PrefabInstance:
       propertyPath: <BuildingData>k__BackingField
       value: 
       objectReference: {fileID: 11400000, guid: 857c112f134cfb54f8adfa3f48e7d6a8, type: 2}
+    - target: {fileID: 7970570622879129538, guid: 719a1626656a245468c8c4df5bab0813, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.x
+      value: 4.85
+      objectReference: {fileID: 0}
+    - target: {fileID: 7970570622879129538, guid: 719a1626656a245468c8c4df5bab0813, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.y
+      value: 5.14
+      objectReference: {fileID: 0}
     - target: {fileID: 7970570622879129539, guid: 719a1626656a245468c8c4df5bab0813, type: 3}
       propertyPath: m_Name
       value: City Hall
@@ -62,6 +70,22 @@ PrefabInstance:
     - target: {fileID: 7970570622879129540, guid: 719a1626656a245468c8c4df5bab0813, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7970570622879129541, guid: 719a1626656a245468c8c4df5bab0813, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 10be84e52a576374390e565be7db81d8, type: 3}
+    - target: {fileID: 7970570622879129541, guid: 719a1626656a245468c8c4df5bab0813, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7970570622879129541, guid: 719a1626656a245468c8c4df5bab0813, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7970570622879129541, guid: 719a1626656a245468c8c4df5bab0813, type: 3}
+      propertyPath: m_Color.r
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 719a1626656a245468c8c4df5bab0813, type: 3}

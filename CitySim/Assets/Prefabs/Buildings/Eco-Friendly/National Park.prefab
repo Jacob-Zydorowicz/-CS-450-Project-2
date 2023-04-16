@@ -15,6 +15,14 @@ PrefabInstance:
       propertyPath: <BuildingData>k__BackingField
       value: 
       objectReference: {fileID: 11400000, guid: 7ea5b3d5161df1349b8068c2727fdb3f, type: 2}
+    - target: {fileID: 7970570622879129538, guid: 5da2677606c0a4247b46f803c54866e7, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.x
+      value: 1.44
+      objectReference: {fileID: 0}
+    - target: {fileID: 7970570622879129538, guid: 5da2677606c0a4247b46f803c54866e7, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.y
+      value: 0.45
+      objectReference: {fileID: 0}
     - target: {fileID: 7970570622879129539, guid: 5da2677606c0a4247b46f803c54866e7, type: 3}
       propertyPath: m_Name
       value: National Park
@@ -62,6 +70,22 @@ PrefabInstance:
     - target: {fileID: 7970570622879129540, guid: 5da2677606c0a4247b46f803c54866e7, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7970570622879129541, guid: 5da2677606c0a4247b46f803c54866e7, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 2023695316, guid: 3346d6a193344084ebe862b8f321f9a4, type: 3}
+    - target: {fileID: 7970570622879129541, guid: 5da2677606c0a4247b46f803c54866e7, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7970570622879129541, guid: 5da2677606c0a4247b46f803c54866e7, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7970570622879129541, guid: 5da2677606c0a4247b46f803c54866e7, type: 3}
+      propertyPath: m_Color.r
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5da2677606c0a4247b46f803c54866e7, type: 3}
