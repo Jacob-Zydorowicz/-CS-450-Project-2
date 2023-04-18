@@ -32,7 +32,9 @@ public class CO2Observer : Observer
             halfFullMusic.Play();
         }
 
-
-        npcSpawner.UpdateNPCNum(Mathf.FloorToInt(currentCO2));
+        if (CO2 >= 50)
+        {
+            npcSpawner.UpdateNPCNum(Mathf.FloorToInt(-1));
+        }
     }
 }

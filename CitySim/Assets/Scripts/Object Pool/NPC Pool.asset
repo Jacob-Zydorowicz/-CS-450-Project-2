@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: NPC Pool
   m_EditorClassIdentifier: 
   <Prefab>k__BackingField: {fileID: 1810208429129154195, guid: 0f84cc4a840e939408e9836a84a384e5, type: 3}
-  <Size>k__BackingField: 100
+  <Size>k__BackingField: 10

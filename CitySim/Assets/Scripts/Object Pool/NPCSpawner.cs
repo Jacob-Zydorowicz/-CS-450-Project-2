@@ -1,21 +1,35 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class NPCSpawner : ObjectPooler
 {
-    int numActiveNPCs = 0;
+    private Queue<GameObject> activeNPCs = new Queue<GameObject>();
 
     // Start is called before the first frame update
     void Start()
     {
-        numActiveNPCs = 0;
+        
     }
 
-    public void UpdateNPCNum(int currentCO2)
+    public void SpawnNPC()
     {
-        int numToSpawn = numActiveNPCs - currentCO2;
+        GameObject newNPC = SpawnFromPool("NPC", Random.insideUnitCircle * 10f, Quaternion.identity);
+        activeNPCs.Enqueue(newNPC);
+    }
 
+    public void DespawnNPC()
+    {
+        if (activeNPCs.Count > 0)
+        {
+            ReturnObjectToPool("NPC", activeNPCs.Peek());
+        }
+
+    }
+
+    public void UpdateNPCNum(int numToSpawn)
+    {
         bool positiveNumToSpawn = true;
         if(numToSpawn < 0)
         {
@@ -27,11 +41,11 @@ public class NPCSpawner : ObjectPooler
         {
             if(positiveNumToSpawn)
             {
-                SpawnFromPool("NPC", Random.insideUnitCircle * 10f, Quaternion.identity);
+                SpawnNPC();
             }
             else
             {
-                ReturnObjectToPool("NPC", transform.GetChild(i).gameObject);
+                DespawnNPC();
             }
         }
     }

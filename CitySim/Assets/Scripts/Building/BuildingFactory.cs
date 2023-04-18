@@ -68,6 +68,7 @@ public class BuildingFactory : MonoBehaviour
         if(Instance.buildingDictionary.TryGetValue(buildingName, out GameObject buildingToSpawn))
         {
             building = Instantiate(buildingToSpawn, new Vector2(1000, 1000), Quaternion.identity).GetComponent<Building>();
+            FindObjectOfType<NPCSpawner>().UpdateNPCNum(1);
         }
 
         return building;
