@@ -11,8 +11,11 @@ public class CO2Observer : Observer
     [SerializeField] Image fillBar;
     [SerializeField] Gradient gd;
 
+    private NPCSpawner npcSpawner;
+
     private void Awake()
     {
+        npcSpawner = FindObjectOfType<NPCSpawner>();
         fillBar.fillAmount = 0;
     }
 
@@ -29,7 +32,7 @@ public class CO2Observer : Observer
             halfFullMusic.Play();
         }
 
-       
 
+        npcSpawner.UpdateNPCNum(Mathf.FloorToInt(currentCO2));
     }
 }
