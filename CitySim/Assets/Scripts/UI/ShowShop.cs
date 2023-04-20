@@ -5,13 +5,22 @@ using UnityEngine;
 public class ShowShop : MonoBehaviour
 {
     public GameObject shopPanel;
-    public void openShop()
-    {
-        shopPanel.SetActive(true);
-    }
+    private bool opened = false;
 
-    public void closeShop()
+    private void Update()
     {
-        shopPanel.SetActive(false);
+        if(Input.GetKeyDown(KeyCode.Space))
+        {
+            if(opened)
+            {
+                shopPanel.SetActive(false);
+                opened = false;
+            }
+            else
+            {
+                shopPanel.SetActive(true);
+                opened = true;
+            }
+        }
     }
 }
