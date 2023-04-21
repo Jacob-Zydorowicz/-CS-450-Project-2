@@ -2879,6 +2879,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3044281032500127713, guid: 411a51fcd91460d42bdd743eea8ca7b9, type: 3}
+      propertyPath: m_Volume
+      value: 0.2
+      objectReference: {fileID: 0}
     - target: {fileID: 3044281032500127714, guid: 411a51fcd91460d42bdd743eea8ca7b9, type: 3}
       propertyPath: m_Name
       value: Singleton audio manager
