@@ -137,6 +137,11 @@ public class Building : MonoBehaviour
                 break;
         }
     }
+
+    public void Delete()
+    {
+        DestroyImmediate(gameObject);
+    }
     #endregion
 }
 

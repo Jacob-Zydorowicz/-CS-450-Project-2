@@ -7,13 +7,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.Tilemaps;
 
-public class PlayerBuildController : MonoBehaviour, Command
+public class PlayerBuildController : MonoBehaviour
 {
     #region Fields
     private int currentBuildCost=0;
-    private string currentBuildingName = "";
 
     [Tooltip("The names of the buildings in the same order as they are in the building factory")]
     [SerializeField] private string[] buildingNames = new string[0];
@@ -21,21 +21,37 @@ public class PlayerBuildController : MonoBehaviour, Command
     [Tooltip("The object that is the shop")]
     [SerializeField] private GameObject shop;
 
-    private Building currentBuilding;
+    [HideInInspector] public Building currentBuilding;
+    [HideInInspector] public PlacingTile currentPlacingTile;
+    [HideInInspector] public string currentBuildingName = "";
+
     private bool hasValidLocation = false;
 
     public AudioSource playerBuildClips;
     public AudioClip shopBuyClip;
     public AudioClip shopDenyClip;
     public AudioClip placeBuildingClip;
-    
-
-    private PlacingTile currentPlacingTile;
+    public AudioClip undoClip;
 
     private List<Building> recentlyPlacedBuildings = new List<Building>();
+
+    PlaceBuildingCommand placeBuildingCommand;
+    DestroyBuildingCommand destroyBuildingCommand;
+
+    private Stack<Command> previousCommands = new Stack<Command>();
+
+    private static PlayerBuildController Instance;
     #endregion
 
     #region Functions
+    private void Awake()
+    {
+        Instance = this;
+
+        placeBuildingCommand = new PlaceBuildingCommand(this);
+        destroyBuildingCommand = new DestroyBuildingCommand(this);
+    }
+
     /// <summary>
     /// Handles initilization of components and other fields before anything else.
     /// </summary>
@@ -55,35 +71,30 @@ public class PlayerBuildController : MonoBehaviour, Command
 
             currentBuildingName = name;
             currentBuilding = newBuilding;
+
+            PlaceBuildingText.SetText(newBuilding.GetData.BuildingName, newBuilding.GetData.Money);
         }
     }
 
-    public void Execute()
+    public static void ResetCommands()
     {
-        PlaceBuilding();
-        playerBuildClips.PlayOneShot(placeBuildingClip);
+        Instance.previousCommands.Clear();
     }
 
-    public void Undo()
+    public void UndoLastCommand()
     {
-        GetTileAtLocation(recentlyPlacedBuildings[recentlyPlacedBuildings.Count - 1].transform.position).ChangeValidState(true);
-        Destroy(recentlyPlacedBuildings[recentlyPlacedBuildings.Count-1].gameObject);
-        recentlyPlacedBuildings.RemoveAt(recentlyPlacedBuildings.Count - 1);
+        if(previousCommands.Count > 0)
+        {
+            previousCommands.Pop().Undo();
+            playerBuildClips.PlayOneShot(undoClip);
+        }
     }
 
     private void PlaceBuilding()
     {
-        if (hasValidLocation)
-        {
-            EconManager.Buy(currentBuilding.GetData.Money);
-
-            PlayerTurnManager.AddCommand(this);
-            currentPlacingTile.ChangeValidState(false);
-            currentBuilding.SetBuildingState(Building.BuildingStateEnum.PLACED);
-            recentlyPlacedBuildings.Add(currentBuilding);
-            currentBuilding = null;
-            ResetBuilding(currentBuildingName);
-        }
+        placeBuildingCommand.Execute();
+        previousCommands.Push(placeBuildingCommand);
+        playerBuildClips.PlayOneShot(placeBuildingClip);
     }
 
     #region Player Input
@@ -100,12 +111,17 @@ public class PlayerBuildController : MonoBehaviour, Command
 
     private void PlayerInput()
     {
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            UndoLastCommand();
+        }
+
         if (Input.GetKeyDown(KeyCode.Mouse0))
         {
             if(hasValidLocation)
             {
                 playerBuildClips.PlayOneShot(shopBuyClip);
-                Execute();
+                PlaceBuilding();
             }
             else
             {
@@ -260,7 +276,7 @@ public class PlayerBuildController : MonoBehaviour, Command
             hasValidLocation = CheckValidLocations(currentPlacingTile);
             currentBuilding.transform.position = currentPlacingTile.transform.position;
 
-            if (!EconManager.CanBuy(currentBuilding.GetData.Money))
+            if (!EconManager.CanBuy(currentBuilding.GetData.Money) || CheckUI())
             {
                 hasValidLocation = false;
             }
@@ -272,6 +288,27 @@ public class PlayerBuildController : MonoBehaviour, Command
         {
             hasValidLocation = false;
         }
+    }
+
+    private bool CheckUI()
+    {
+        var pointerData = new PointerEventData(FindObjectOfType<EventSystem>());
+        //Set the Pointer Event Position to that of the game object
+        pointerData.position = Input.mousePosition;
+
+        //Create a list of Raycast Results
+        List<RaycastResult> results = new List<RaycastResult>();
+
+        EventSystem.current.RaycastAll(pointerData, results);
+
+        foreach(var ray in results)
+        {
+            print("Result: " + ray.gameObject.name);
+
+            return true;
+        }
+
+        return false;
     }
 
     private PlacingTile GetTileAtLocation(Vector3 position)
@@ -294,9 +331,9 @@ public class PlayerBuildController : MonoBehaviour, Command
         switch (currentBuilding.locationToCheck.Length)
         {
             case 1:
-                return placingTile.isValidLocation;
+                return placingTile.IsValidLocation;
             case 2:
-                return placingTile.isValidLocation;
+                return placingTile.IsValidLocation;
             case 0:
             default:
                 return false;

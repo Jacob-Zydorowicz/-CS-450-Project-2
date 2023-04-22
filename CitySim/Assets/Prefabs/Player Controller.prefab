@@ -46,10 +46,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8862005443d31de429498cfa4ad67eb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  buildingNames: []
+  shop: {fileID: 0}
+  currentBuilding: {fileID: 0}
+  currentPlacingTile: {fileID: 0}
+  currentBuildingName: 
   playerBuildClips: {fileID: 347317364}
   shopBuyClip: {fileID: 8300000, guid: 58bd8e734cc5cf74aa9b7b8123ffbab7, type: 3}
   shopDenyClip: {fileID: 8300000, guid: 279e306462771a648a7801cd28e0a1f5, type: 3}
   placeBuildingClip: {fileID: 8300000, guid: 6c968c9ed4700694d9f1bc4187dd8974, type: 3}
+  undoClip: {fileID: 8300000, guid: 8fd609a1310040644a37cdd1cc1ffbc9, type: 3}
 --- !u!212 &2504120791184412715
 SpriteRenderer:
   m_ObjectHideFlags: 0

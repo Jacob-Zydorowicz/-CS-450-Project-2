@@ -11,16 +11,12 @@ using UnityEngine;
 public class PlayerTurnManager : MonoBehaviour
 {
     #region Fields
-    private List<Command> buildingCommands = new List<Command>();
     [SerializeField] int maxTurns = 50;
     [SerializeField] float baseCO2rate = .1f;
     [SerializeField] float CO2RateOfIncrease = .4f;
     private static int turn;
     private static Subject sb;
     private static PlayerTurnManager Instance;
-
-    public AudioSource undoSource;
-    public AudioClip undoClip;
     #endregion
 
     #region Functions
@@ -31,44 +27,17 @@ public class PlayerTurnManager : MonoBehaviour
         sb = FindObjectOfType<Subject>();
     }
 
-    public static void AddCommand(Command commandExecuted)
-    {
-        Instance.buildingCommands.Add(commandExecuted);
-    }
-
-    public static void RemoveCommand()
-    {
-
-    }
-
     /// <summary>
     /// Calls for an event to take place once per frame.
     /// </summary>
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.R))
-        {
-            Undo();
-        }
-
         if (Input.GetKeyDown(KeyCode.Tab))
         {
             //Debug.Log("next turn");
             NextTurn();
         }
     }
-
-    public void Undo()
-    {
-        if (buildingCommands.Count != 0)
-        {
-            buildingCommands[buildingCommands.Count - 1].Undo();
-            buildingCommands.RemoveAt(buildingCommands.Count - 1);
-        }
-
-        undoSource.PlayOneShot(undoClip);
-    }
-
 
     public void NextTurn()
     {
@@ -79,7 +48,9 @@ public class PlayerTurnManager : MonoBehaviour
         {
             building.TurnEffect();
         }
-        Instance.buildingCommands.Clear();
+
+        PlayerBuildController.ResetCommands();
+
         if (turn >= maxTurns)
             GameObject.FindObjectOfType<ExtraMenusController>().Win();
     }

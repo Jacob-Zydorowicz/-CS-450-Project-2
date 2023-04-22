@@ -11,13 +11,28 @@ using UnityEngine;
 public class PlacingTile : MonoBehaviour
 {
     #region Fields
-    [field:SerializeField] public bool isValidLocation { get; private set; } = true;
+    [Tooltip("Set to false if this location is an invalid tile")]
+    [SerializeField] private bool CanPlaceHere = true;
+
+    public bool IsValidLocation 
+    {
+        get
+        {
+            return CanPlaceHere && BuildingOnLocation == null;
+        } 
+    }
+
+    [field: SerializeField] public Building BuildingOnLocation;
     #endregion
 
     #region Functions
-    public void ChangeValidState(bool newState)
+    /// <summary>
+    /// Sets the building at this location. Set this to null when removing building.
+    /// </summary>
+    /// <param name="newBuilding">The new building on this location.</param>
+    public void SetBuilding(Building newBuilding)
     {
-        isValidLocation = newState;
+        BuildingOnLocation = newBuilding;
     }
     #endregion
 }
