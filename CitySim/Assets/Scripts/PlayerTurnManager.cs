@@ -60,28 +60,32 @@ public class PlayerTurnManager : MonoBehaviour
 
     public void Undo()
     {
-        if (buildingCommands.Count != 0)
+        if (buildingCommands.Count != 0 && Time.timeScale != 0)
         {
             buildingCommands[buildingCommands.Count - 1].Undo();
             buildingCommands.RemoveAt(buildingCommands.Count - 1);
+            undoSource.PlayOneShot(undoClip);
         }
 
-        undoSource.PlayOneShot(undoClip);
+        
     }
 
 
     public void NextTurn()
     {
-        turn++;
-        CO2Manager.UpdateCO2((baseCO2rate + CO2RateOfIncrease * (turn - 1)));
-        sb.UpdateTurn(turn);
-        foreach(Building building in GameObject.FindObjectsOfType<Building>())
+        if (Time.timeScale != 0)
         {
-            building.TurnEffect();
+            turn++;
+            CO2Manager.UpdateCO2((baseCO2rate + CO2RateOfIncrease * (turn - 1)));
+            sb.UpdateTurn(turn);
+            foreach (Building building in GameObject.FindObjectsOfType<Building>())
+            {
+                building.TurnEffect();
+            }
+            Instance.buildingCommands.Clear();
+            if (turn >= maxTurns)
+                GameObject.FindObjectOfType<ExtraMenusController>().Win();
         }
-        Instance.buildingCommands.Clear();
-        if (turn >= maxTurns)
-            GameObject.FindObjectOfType<ExtraMenusController>().Win();
     }
     #endregion
 }
