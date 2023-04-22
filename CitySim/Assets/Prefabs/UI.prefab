@@ -4786,7 +4786,7 @@ MonoBehaviour:
   m_BlockingObjects: 0
   m_BlockingMask:
     serializedVersion: 2
-    m_Bits: 55
+    m_Bits: 0
 --- !u!114 &3452258031205468430
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4849,7 +4849,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: afbf7e9162bae7644b6952d9200f3035, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shopPanel: {fileID: 4539872256151665748}
+  shopPanel: {fileID: 0}
 --- !u!114 &656707423897885851
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5098,10 +5098,5 @@ PrefabInstance:
 --- !u!4 &255719301001169628 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5904506664672771001, guid: 1bbf00fa9f7a38946b8270384774b972, type: 3}
-  m_PrefabInstance: {fileID: 5944042178238869861}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &4539872256151665748 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7889645868478876977, guid: 1bbf00fa9f7a38946b8270384774b972, type: 3}
   m_PrefabInstance: {fileID: 5944042178238869861}
   m_PrefabAsset: {fileID: 0}

@@ -32,6 +32,8 @@ public class EconManager : MonoBehaviour
 
     public static bool CanBuy(int amount)
     {
+        if (Time.timeScale == 0)
+            return false;
         return amount <= currentAmount;
     }
 

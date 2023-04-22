@@ -2030,6 +2030,14 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8701383758470313067, guid: 1bbf00fa9f7a38946b8270384774b972, type: 3}
+      propertyPath: m_BlockingObjects
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8701383758470313067, guid: 1bbf00fa9f7a38946b8270384774b972, type: 3}
+      propertyPath: m_BlockingMask.m_Bits
+      value: 127
+      objectReference: {fileID: 0}
     - target: {fileID: 9059214270281279274, guid: 1bbf00fa9f7a38946b8270384774b972, type: 3}
       propertyPath: m_IsActive
       value: 0

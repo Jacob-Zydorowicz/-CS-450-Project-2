@@ -41,12 +41,18 @@ public class PlayerTurnManager : MonoBehaviour
 
     public void NextTurn()
     {
-        turn++;
-        CO2Manager.UpdateCO2((baseCO2rate + CO2RateOfIncrease * (turn - 1)));
-        sb.UpdateTurn(turn);
-        foreach(Building building in GameObject.FindObjectsOfType<Building>())
+        if (Time.timeScale != 0)
         {
-            building.TurnEffect();
+            turn++;
+            CO2Manager.UpdateCO2((baseCO2rate + CO2RateOfIncrease * (turn - 1)));
+            sb.UpdateTurn(turn);
+            foreach (Building building in GameObject.FindObjectsOfType<Building>())
+            {
+                building.TurnEffect();
+            }
+            Instance.buildingCommands.Clear();
+            if (turn >= maxTurns)
+                GameObject.FindObjectOfType<ExtraMenusController>().Win();
         }
 
         PlayerBuildController.ResetCommands();
