@@ -8,6 +8,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 2008146874120542897, guid: a756a8a2153b5864aa72d3420f1bec91, type: 3}
+      propertyPath: CanPlaceHere
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2008146874120542897, guid: a756a8a2153b5864aa72d3420f1bec91, type: 3}
       propertyPath: <isValidLocation>k__BackingField
       value: 0
       objectReference: {fileID: 0}

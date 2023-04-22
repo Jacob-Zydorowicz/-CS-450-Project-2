@@ -12,5 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c83e12ea43b96ca4ea7086540a26329b, type: 3}
   m_Name: School Data
   m_EditorClassIdentifier: 
+  <BuildingName>k__BackingField: School
+  <BuildingDescription>k__BackingField: 
+  <AbilityDescription>k__BackingField: 
   <CO2>k__BackingField: 0
   <Money>k__BackingField: 250
