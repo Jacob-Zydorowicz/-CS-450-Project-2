@@ -7,12 +7,17 @@ using UnityEngine.SceneManagement;
 public class ExtraMenusController : MonoBehaviour
 {
     [SerializeField] GameObject pauseMenu, loseMenu, winMenu;
+    public WinMenu win;
+    public LoseMenu lose;
     bool won = false;
 
     private void Start()
     {
         won = false;
         Time.timeScale = 1;
+
+        win = gameObject.GetComponent<WinMenu>();
+        lose = gameObject.GetComponent<LoseMenu>();
     }
 
     private void Update()
@@ -53,8 +58,9 @@ public class ExtraMenusController : MonoBehaviour
     }
     public void Lose()
     {
-        Time.timeScale = 0f;
-        loseMenu.SetActive(true);
+        //Time.timeScale = 0f;
+        //loseMenu.SetActive(true);
+        lose.LoseScreen(loseMenu);
     }
 
     public void Win()
@@ -64,6 +70,7 @@ public class ExtraMenusController : MonoBehaviour
             won = true;
             Time.timeScale = 0f;
             winMenu.SetActive(true);
+            //win.WinScreen(winMenu);
         }
     }
 }
