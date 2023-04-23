@@ -8,7 +8,7 @@ public class CO2Manager : MonoBehaviour
     static float max;
     static float currentAmount;
     static Subject subject;
-    public bool gameOver;
+    //public bool gameOver;
     // Start is called before the first frame update
     void Start()
     {
@@ -16,7 +16,7 @@ public class CO2Manager : MonoBehaviour
         max = maxAmount;
         subject = FindObjectOfType<Subject>();
         subject.UpdateCO2(currentAmount);
-        gameOver = false;
+        //gameOver = false;
     }
 
     static public void UpdateCO2(float value)
