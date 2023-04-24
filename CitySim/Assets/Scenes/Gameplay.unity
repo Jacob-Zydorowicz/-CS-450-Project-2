@@ -37776,10 +37776,6 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 366106855, guid: 567e5c8a408a17144870f818720d8753, type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 366106855, guid: 567e5c8a408a17144870f818720d8753, type: 3}
       propertyPath: shopPanel
       value: 
       objectReference: {fileID: 34778986}
@@ -37787,14 +37783,6 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1180604994}
-    - target: {fileID: 1499613084, guid: 567e5c8a408a17144870f818720d8753, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: UndoLastCommand
-      objectReference: {fileID: 0}
-    - target: {fileID: 1499613084, guid: 567e5c8a408a17144870f818720d8753, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: PlayerBuildController, Assembly-CSharp
-      objectReference: {fileID: 0}
     - target: {fileID: 3452258031205468426, guid: 567e5c8a408a17144870f818720d8753, type: 3}
       propertyPath: m_Name
       value: UI
