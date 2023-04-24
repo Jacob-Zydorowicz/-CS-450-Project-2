@@ -1370,6 +1370,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 257241016745536063, guid: 1bbf00fa9f7a38946b8270384774b972, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -92.3
+      objectReference: {fileID: 0}
     - target: {fileID: 937434524537138694, guid: 1bbf00fa9f7a38946b8270384774b972, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
       value: 1
@@ -1891,6 +1895,14 @@ PrefabInstance:
       value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 5904506664672771001, guid: 1bbf00fa9f7a38946b8270384774b972, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5904506664672771001, guid: 1bbf00fa9f7a38946b8270384774b972, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.48
+      objectReference: {fileID: 0}
+    - target: {fileID: 5904506664672771001, guid: 1bbf00fa9f7a38946b8270384774b972, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
@@ -2006,6 +2018,10 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
       value: National Park
       objectReference: {fileID: 0}
+    - target: {fileID: 7292287563049435782, guid: 1bbf00fa9f7a38946b8270384774b972, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -185.1
+      objectReference: {fileID: 0}
     - target: {fileID: 7465510399721763161, guid: 1bbf00fa9f7a38946b8270384774b972, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
       value: 1
@@ -2029,6 +2045,22 @@ PrefabInstance:
     - target: {fileID: 8171034505226856364, guid: 1bbf00fa9f7a38946b8270384774b972, type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8412360730296312323, guid: 1bbf00fa9f7a38946b8270384774b972, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.0035496
+      objectReference: {fileID: 0}
+    - target: {fileID: 8412360730296312323, guid: 1bbf00fa9f7a38946b8270384774b972, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.6048713
+      objectReference: {fileID: 0}
+    - target: {fileID: 8412360730296312323, guid: 1bbf00fa9f7a38946b8270384774b972, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.99116
+      objectReference: {fileID: 0}
+    - target: {fileID: 8412360730296312323, guid: 1bbf00fa9f7a38946b8270384774b972, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -53.8
       objectReference: {fileID: 0}
     - target: {fileID: 8701383758470313067, guid: 1bbf00fa9f7a38946b8270384774b972, type: 3}
       propertyPath: m_BlockingObjects
