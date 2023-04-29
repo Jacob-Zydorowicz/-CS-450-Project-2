@@ -23,11 +23,32 @@ public class PlaceBuildingText : MonoBehaviour
         Instance = this;
     }
 
-    public static void SetText(string buildingName, int buildingCost)
+    public static void SetText(string buildingName, int buildingCost, bool isValid)
     {
         if (Instance == null || Instance.text == null) return;
 
-        Instance.text.text = "Left Click to Place: " + buildingName + " for $" + buildingCost;
+        if (isValid)
+        {
+            Instance.text.text = "Left Click to Place: " + buildingName + " for $" + buildingCost;
+        }
+        else
+        {
+            Instance.text.text = "Unable to build: " + buildingName;
+        }
+    }
+
+    public static void SetDestroyText(string buildingName, int buildingCost)
+    {
+        if (Instance == null || Instance.text == null) return;
+
+        if (PlayerBuildController.RecieveMoneyFromDestroying)
+        {
+            Instance.text.text = "Left Click to Sell: " + buildingName + " for $" + buildingCost;
+        }
+        else
+        {
+            Instance.text.text = "Left Click to Destroy: " + buildingName;
+        }
     }
     #endregion
 }

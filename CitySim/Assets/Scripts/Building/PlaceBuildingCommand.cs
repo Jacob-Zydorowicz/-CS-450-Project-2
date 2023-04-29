@@ -13,6 +13,11 @@ public class PlaceBuildingCommand : Command
     #region Fields
     private Stack<Building> previouslyPlaceBuildings = new Stack<Building>();
     private PlayerBuildController playerBuildController;
+
+    public bool HasBuilding(Building buildToCheck)
+    {
+        return previouslyPlaceBuildings.Contains(buildToCheck);
+    }
     #endregion
 
     #region Functions
@@ -41,6 +46,11 @@ public class PlaceBuildingCommand : Command
         //playerBuildController.GetTileAtLocation(recentlyPlacedBuildings[recentlyPlacedBuildings.Count - 1].transform.position).SetBuilding(null);
         EconManager.Buy(-building.GetData.Money);
         building.Delete();
+    }
+
+    public void Reset()
+    {
+        previouslyPlaceBuildings.Clear();
     }
     #endregion
 }

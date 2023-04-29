@@ -13,11 +13,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6181802224081751499, guid: 11a9bc38fd83c50409894fe8777748ab, type: 3}
       propertyPath: stateColor.b
-      value: 0.8588236
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6181802224081751499, guid: 11a9bc38fd83c50409894fe8777748ab, type: 3}
       propertyPath: stateColor.g
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6181802224081751499, guid: 11a9bc38fd83c50409894fe8777748ab, type: 3}
       propertyPath: stateColor.r
@@ -25,7 +25,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7427235130231587851, guid: 11a9bc38fd83c50409894fe8777748ab, type: 3}
       propertyPath: m_Name
-      value: Master Commercial Prefab
+      value: M_Industry
+      objectReference: {fileID: 0}
+    - target: {fileID: 7427235130231587851, guid: 11a9bc38fd83c50409894fe8777748ab, type: 3}
+      propertyPath: m_TagString
+      value: Industry
       objectReference: {fileID: 0}
     - target: {fileID: 7427235130231587852, guid: 11a9bc38fd83c50409894fe8777748ab, type: 3}
       propertyPath: m_RootOrder

@@ -21,11 +21,14 @@ public class PlayerBuildController : MonoBehaviour
     [Tooltip("The object that is the shop")]
     [SerializeField] private GameObject shop;
 
+    [HideInInspector] public Building buildingToSell;
     [HideInInspector] public Building currentBuilding;
     [HideInInspector] public PlacingTile currentPlacingTile;
     [HideInInspector] public string currentBuildingName = "";
 
-    private bool hasValidLocation = false;
+    public enum ValidLocationState { VALID, INVALID, HASBUILDING }
+
+    private ValidLocationState hasValidLocation = ValidLocationState.INVALID;
 
     public AudioSource playerBuildClips;
     public AudioClip shopBuyClip;
@@ -41,6 +44,26 @@ public class PlayerBuildController : MonoBehaviour
     private Stack<Command> previousCommands = new Stack<Command>();
 
     private static PlayerBuildController Instance;
+
+    public static bool RecieveMoneyFromDestroying
+    {
+        get
+        {
+            var recieveMoneyAbilities = FindObjectsOfType<ReturnMoneyAbility>();
+
+            foreach(var returnMoney in recieveMoneyAbilities)
+            {
+                if (returnMoney.enabled)
+                {
+                    return true;
+                }
+            }
+
+            return Instance.placeBuildingCommand.HasBuilding(Instance.buildingToSell);
+
+            //return recieveMoneyAbilities.Length != 0 || Instance.placeBuildingCommand.HasBuilding(Instance.buildingToSell);
+        }
+    }
     #endregion
 
     #region Functions
@@ -72,13 +95,15 @@ public class PlayerBuildController : MonoBehaviour
             currentBuildingName = name;
             currentBuilding = newBuilding;
 
-            PlaceBuildingText.SetText(newBuilding.GetData.BuildingName, newBuilding.GetData.Money);
+            PlaceBuildingText.SetText(newBuilding.GetData.BuildingName, newBuilding.GetData.Money, false);
         }
     }
 
     public static void ResetCommands()
     {
         Instance.previousCommands.Clear();
+
+        Instance.placeBuildingCommand.Reset();
     }
 
     public void UndoLastCommand()
@@ -95,6 +120,12 @@ public class PlayerBuildController : MonoBehaviour
         placeBuildingCommand.Execute();
         previousCommands.Push(placeBuildingCommand);
         playerBuildClips.PlayOneShot(placeBuildingClip);
+    }
+
+    private void DestroyBuilding()
+    {
+        destroyBuildingCommand.Execute();
+        previousCommands.Push(destroyBuildingCommand);
     }
 
     #region Player Input
@@ -118,10 +149,14 @@ public class PlayerBuildController : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Mouse0))
         {
-            if(hasValidLocation)
+            if(hasValidLocation == ValidLocationState.VALID)
             {
                 playerBuildClips.PlayOneShot(shopBuyClip);
                 PlaceBuilding();
+            }
+            else if (hasValidLocation == ValidLocationState.HASBUILDING)
+            {
+                DestroyBuilding();
             }
             else
             {
@@ -273,21 +308,66 @@ public class PlayerBuildController : MonoBehaviour
 
         if(currentPlacingTile)
         {
-            hasValidLocation = CheckValidLocations(currentPlacingTile);
-            currentBuilding.transform.position = currentPlacingTile.transform.position;
-
-            if (!EconManager.CanBuy(currentBuilding.GetData.Money) || CheckUI())
-            {
-                hasValidLocation = false;
-            }
-
-            Building.BuildingStateEnum buildingState = hasValidLocation ? Building.BuildingStateEnum.VALIDPREVIEW : Building.BuildingStateEnum.INVALIDPREVIEW;
-            currentBuilding.SetBuildingState(buildingState);
+            CheckExtraBuildingConditions();
         }
         else
         {
-            hasValidLocation = false;
+            hasValidLocation = ValidLocationState.INVALID;
         }
+
+        SetBuildingText();
+
+        currentBuilding.gameObject.SetActive(hasValidLocation != ValidLocationState.HASBUILDING);
+    }
+
+    private void SetBuildingText()
+    {
+        switch (hasValidLocation)
+        {
+            case ValidLocationState.VALID:
+                PlaceBuildingText.SetText(currentBuilding.GetData.BuildingName, currentBuilding.GetData.Money, true);
+                break;
+            case ValidLocationState.INVALID:
+                PlaceBuildingText.SetText(currentBuilding.GetData.BuildingName, currentBuilding.GetData.Money, false);
+                break;
+            case ValidLocationState.HASBUILDING:
+                PlaceBuildingText.SetDestroyText(buildingToSell.GetData.BuildingName, buildingToSell.GetData.Money);
+                break;
+        }
+    }
+
+    private void CheckExtraBuildingConditions()
+    {
+        hasValidLocation = CheckValidLocations(currentPlacingTile);
+
+        currentBuilding.transform.position = currentPlacingTile.transform.position;
+
+        if (CheckUI())
+        {
+            hasValidLocation = ValidLocationState.INVALID;
+        }
+
+        if (hasValidLocation == ValidLocationState.VALID)
+        {
+            var notEnoughMoney = !EconManager.CanBuy(currentBuilding.GetData.Money);
+            var reqMet = currentBuilding.gameObject.TryGetComponent(out BuildingPlacementRequirement buildingReq) && !buildingReq.CheckRequirement(currentPlacingTile);
+
+            print("Not enough Money: " + notEnoughMoney);
+            print("Req Met: " + reqMet);
+
+            if (notEnoughMoney || reqMet)
+            {
+                hasValidLocation = ValidLocationState.INVALID;
+            }
+        }
+        else if (hasValidLocation == ValidLocationState.HASBUILDING)
+        {
+            buildingToSell = currentPlacingTile.BuildingOnLocation;
+        }
+
+        Building.BuildingStateEnum buildingState = hasValidLocation == ValidLocationState.VALID ? Building.BuildingStateEnum.VALIDPREVIEW : Building.BuildingStateEnum.INVALIDPREVIEW;
+
+        currentBuilding.SetBuildingState(buildingState);
     }
 
     private bool CheckUI()
@@ -311,7 +391,7 @@ public class PlayerBuildController : MonoBehaviour
         return false;
     }
 
-    private PlacingTile GetTileAtLocation(Vector3 position)
+    public PlacingTile GetTileAtLocation(Vector3 position)
     {
         RaycastHit2D[] hits = Physics2D.RaycastAll(position, Vector2.zero);
 
@@ -326,18 +406,39 @@ public class PlayerBuildController : MonoBehaviour
         return null;
     }
 
-    private bool CheckValidLocations(PlacingTile placingTile)
+    private ValidLocationState CheckValidLocations(PlacingTile placingTile)
     {
+        return placingTile.IsValidLocation;
+
+        /*
         switch (currentBuilding.locationToCheck.Length)
         {
             case 1:
-                return placingTile.IsValidLocation;
             case 2:
                 return placingTile.IsValidLocation;
             case 0:
             default:
                 return false;
-        }
+        }*/
+    }
+
+    public static List<PlacingTile> CheckSurroundingPlacementTiles(PlacingTile placingTile)
+    {
+        List<PlacingTile> surroundingTiles = new List<PlacingTile>();
+
+        surroundingTiles.Add(Instance.GetTileAtLocation(placingTile.transform.position + new Vector3(-1, 1, 0))); // Top Left
+        surroundingTiles.Add(Instance.GetTileAtLocation(placingTile.transform.position + new Vector3(0, 1, 0))); // Top Mid
+        surroundingTiles.Add(Instance.GetTileAtLocation(placingTile.transform.position + new Vector3(1, 1, 0))); // Top Right
+
+        surroundingTiles.Add(Instance.GetTileAtLocation(placingTile.transform.position + new Vector3(-1, 0, 0))); // Left
+        surroundingTiles.Add(Instance.GetTileAtLocation(placingTile.transform.position + new Vector3(1, 0, 0))); // Right
+
+        surroundingTiles.Add(Instance.GetTileAtLocation(placingTile.transform.position + new Vector3(-1, -1, 0))); // Bot Left
+        surroundingTiles.Add(Instance.GetTileAtLocation(placingTile.transform.position + new Vector3(0, -1, 0))); // Bot Mid
+        surroundingTiles.Add(Instance.GetTileAtLocation(placingTile.transform.position + new Vector3(1, -1, 0))); // Bot Right
+
+
+        return surroundingTiles;
     }
     #endregion
     #endregion

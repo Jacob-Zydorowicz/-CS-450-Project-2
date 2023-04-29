@@ -44,6 +44,25 @@ public class Building : MonoBehaviour
         }
     }
 
+    public BuildingStateEnum GetCurrentState
+    {
+        get
+        {
+            if(currentBuildingState == validBuildingState)
+            {
+                return BuildingStateEnum.VALIDPREVIEW;
+            }
+            else if(currentBuildingState == placedBuildingState)
+            {
+                return BuildingStateEnum.PLACED;
+            }
+            else
+            {
+                return BuildingStateEnum.INVALIDPREVIEW;
+            }
+        }
+    }
+
     // All of the states that the tower has.
     private BuildingState currentBuildingState;
     private ValidPreviewBuildingState validBuildingState;
@@ -140,7 +159,7 @@ public class Building : MonoBehaviour
 
     public void Delete()
     {
-        DestroyImmediate(gameObject);
+        Destroy(gameObject);
     }
     #endregion
 }

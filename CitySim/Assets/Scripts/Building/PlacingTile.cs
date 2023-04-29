@@ -14,11 +14,22 @@ public class PlacingTile : MonoBehaviour
     [Tooltip("Set to false if this location is an invalid tile")]
     [SerializeField] private bool CanPlaceHere = true;
 
-    public bool IsValidLocation 
+    public PlayerBuildController.ValidLocationState IsValidLocation 
     {
         get
         {
-            return CanPlaceHere && BuildingOnLocation == null;
+            if(CanPlaceHere && BuildingOnLocation == null)
+            {
+                return PlayerBuildController.ValidLocationState.VALID;
+            }
+            else if(BuildingOnLocation != null)
+            {
+                return PlayerBuildController.ValidLocationState.HASBUILDING;
+            }
+            else
+            {
+                return PlayerBuildController.ValidLocationState.INVALID;
+            }
         } 
     }
 
