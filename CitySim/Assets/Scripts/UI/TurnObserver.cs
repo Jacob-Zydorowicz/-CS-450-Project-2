@@ -12,6 +12,6 @@ public class TurnObserver : Observer
     public override void UpdateVal(int money, float CO2, int turn)
     {
         currentTurn = turn;
-        counter.text = "Turn: " + turn;
+        counter.text = "Turn: " + turn + "/50";
     }
 }
