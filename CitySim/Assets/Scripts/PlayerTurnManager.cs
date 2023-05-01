@@ -43,6 +43,7 @@ public class PlayerTurnManager : MonoBehaviour
     {
         if (Time.timeScale != 0)
         {
+            EconManager.AddMoney(100);
             turn++;
             CO2Manager.UpdateCO2((baseCO2rate + CO2RateOfIncrease * (turn - 1)));
             sb.UpdateTurn(turn);

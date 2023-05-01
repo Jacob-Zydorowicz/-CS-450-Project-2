@@ -26,7 +26,6 @@ public class PlacedBuildingState : BuildingState
 
     public override void BuildingTickEvent()
     {
-        EconManager.AddMoney(BuildingData.Money);
         CO2Manager.UpdateCO2(BuildingData.CO2);
 
         foreach(BuildingAbility ability in buildingAbilities)
