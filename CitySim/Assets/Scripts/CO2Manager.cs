@@ -22,9 +22,15 @@ public class CO2Manager : MonoBehaviour
     static public void UpdateCO2(float value)
     {
         currentAmount += value;
+
+    }
+
+    static public void TurnEnd()
+    {
         Debug.Log(currentAmount);
         if (currentAmount >= max)
         {
+            Debug.Log(currentAmount + ">" + max);
             subject.UpdateCO2(max);
             GameOver();
 
@@ -37,14 +43,13 @@ public class CO2Manager : MonoBehaviour
         }
         else
             subject.UpdateCO2(currentAmount);
-
-        
     }
 
     static private void GameOver()
     {
+        Debug.Log("Game Over");
         GameObject.FindObjectOfType<ExtraMenusController>().Lose();
-        //Debug.Log("Game Over");
+        
         return;
     }
 }

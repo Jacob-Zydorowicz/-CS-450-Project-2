@@ -23,8 +23,10 @@ public class CO2Observer : Observer
     {
         //Debug.Log(CO2);
         currentCO2 = CO2;
-        fillBar.fillAmount = CO2 / maxCO2;
-        fillBar.color = gd.Evaluate(CO2 / maxCO2);
+        float temp = Mathf.Clamp(CO2 / maxCO2, 0, 1);
+        Debug.Log(temp);
+        fillBar.fillAmount = temp;
+        fillBar.color = gd.Evaluate(temp);
 
 
         if(CO2 >= 50.0f && halfFullMusic.isPlaying == false)

@@ -29,7 +29,7 @@ public class BuildingPlacementRequirement : MonoBehaviour
         foreach (var tile in PlayerBuildController.CheckSurroundingPlacementTiles(tileToCheckAround))
         {
             if(tile.BuildingOnLocation != null)
-            print(tile.BuildingOnLocation.gameObject.tag);
+            //print(tile.BuildingOnLocation.gameObject.tag);
 
             if (tile.BuildingOnLocation != null && tile.BuildingOnLocation.gameObject.CompareTag(tagRequirement))
             {

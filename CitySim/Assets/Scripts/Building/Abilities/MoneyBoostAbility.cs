@@ -18,7 +18,7 @@ public class MoneyBoostAbility : BuildingAbility
     #region Functions
     public override void PerformAbility()
     {
-        print("Gain " + moneyToGain + " Money");
+        //print("Gain " + moneyToGain + " Money");
         EconManager.AddMoney(moneyToGain);
     }
     #endregion

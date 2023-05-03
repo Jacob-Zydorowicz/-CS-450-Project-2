@@ -51,6 +51,7 @@ public class PlayerTurnManager : MonoBehaviour
             {
                 building.TurnEffect();
             }
+            CO2Manager.TurnEnd();
             if (turn >= maxTurns)
                 GameObject.FindObjectOfType<ExtraMenusController>().Win();
         }

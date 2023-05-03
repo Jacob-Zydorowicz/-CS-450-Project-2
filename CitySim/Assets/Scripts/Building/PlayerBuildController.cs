@@ -352,8 +352,8 @@ public class PlayerBuildController : MonoBehaviour
             var notEnoughMoney = !EconManager.CanBuy(currentBuilding.GetData.Money);
             var reqMet = currentBuilding.gameObject.TryGetComponent(out BuildingPlacementRequirement buildingReq) && !buildingReq.CheckRequirement(currentPlacingTile);
 
-            print("Not enough Money: " + notEnoughMoney);
-            print("Req Met: " + reqMet);
+            //print("Not enough Money: " + notEnoughMoney);
+            //print("Req Met: " + reqMet);
 
             if (notEnoughMoney || reqMet)
             {
@@ -383,7 +383,7 @@ public class PlayerBuildController : MonoBehaviour
 
         foreach(var ray in results)
         {
-            print("Result: " + ray.gameObject.name);
+            //print("Result: " + ray.gameObject.name);
 
             return true;
         }
